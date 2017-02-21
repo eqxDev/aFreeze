@@ -11,7 +11,9 @@ import me.eqxdev.afreeze.utils.Lang;
 import me.eqxdev.afreeze.utils.chatroom.ChatManager;
 import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
+import me.eqxdev.afreeze.utils.factions.factions.Factions;
 import me.eqxdev.afreeze.utils.factions.factions.HCFactions;
+import me.eqxdev.afreeze.utils.factions.factions.Mango;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -173,6 +175,12 @@ public class Main extends JavaPlugin {
         if(plugin.equalsIgnoreCase("HCFactions")) {
             faction = new HCFactions();
             getLogger().info("Your server is running: HCFactions.");
+        } else if(plugin.equalsIgnoreCase("Factions")) {
+            faction = new Factions();
+            getLogger().info("Your server is running: Factions.");
+        } else if(plugin.equalsIgnoreCase("Mango")) {
+            faction = new Mango();
+            getLogger().info("Your server is running: Mango.");
         }
         return faction!=null;
     }
