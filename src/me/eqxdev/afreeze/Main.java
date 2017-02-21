@@ -47,6 +47,7 @@ public class Main extends JavaPlugin {
     private File LANG_FILE;
     private CommandRegistry commandRegistry;
 
+    public boolean factionHook = true;
     private Faction faction = null;
     public Faction getFaction() {
         return faction;
@@ -63,7 +64,7 @@ public class Main extends JavaPlugin {
 
         if(!setupFaction()) {
             getServer().getLogger().severe("Could not setup Faction hook.");
-            getServer().getPluginManager().disablePlugin(this);
+            factionHook = false;
         }
 
         ChatManager.get();

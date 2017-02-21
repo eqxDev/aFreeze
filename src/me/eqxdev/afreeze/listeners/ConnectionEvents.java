@@ -36,6 +36,9 @@ public class ConnectionEvents implements Listener {
             // leave
             msg = Lang.NOTIFY_LEAVE.toString().replace("%name%",p.getName());
         }
+        if(msg.equals("")) {
+            return;
+        }
         for(Player t : Bukkit.getOnlinePlayers()) {
             if(t.hasPermission(Lang.PERM_FREEZE_NOTIFY.toString()) || t.isOp()) {
                 t.sendMessage(msg);

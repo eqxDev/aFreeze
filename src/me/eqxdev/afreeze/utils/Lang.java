@@ -32,6 +32,7 @@ public enum Lang {
     NOTIFY_LEAVE("NOTIFY_LEAVE", "%name% has left the server while frozen."),
     NOTIFY_JOIN("NOTIFY_JOIN", "%name% has joined the server while frozen."),
     NO_PERMISSION("NO_PERMISSION", "&cNo Permission."),
+    ERROR_FACTION_HOOK("ERROR_FACTION_HOOK","&cThe faction hook has been disabled, check console and your config file."),
 
     PERM_FREEZE_NOTIFY("PERM_FREEZE_NOTIFY", "afreeze.notify"),
     PERM_FREEZE_BYPASS("PERM_FREEZE_BYPASS", "afreeze.bypass"),

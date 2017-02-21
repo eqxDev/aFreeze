@@ -51,6 +51,10 @@ public class FreezeCommand {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
+                    if(!Main.get().factionHook) {
+                        Lang.ERROR_FACTION_HOOK.send(sender);
+                        return;
+                    }
                     Player t = Bukkit.getPlayer(args[1]);
                     if (t == null) {
                         // offline
