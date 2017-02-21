@@ -193,10 +193,13 @@ public class Main extends JavaPlugin {
                 ConfigManager.save(this,"config.yml");
                 getLogger().info("Your server is running: iHCF (esshd).");
             } catch (Exception e) {}
-            
+
             if(faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
             }
+        } else if(plugin.equalsIgnoreCase("iHCF_esshd")) {
+            faction = new IHCF_esshd();
+            getLogger().info("Your server is running: iHCF (esshd).");
         }
         return faction!=null;
     }
