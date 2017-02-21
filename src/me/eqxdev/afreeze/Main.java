@@ -13,8 +13,10 @@ import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import me.eqxdev.afreeze.utils.factions.factions.Factions;
 import me.eqxdev.afreeze.utils.factions.factions.HCFactions;
+import me.eqxdev.afreeze.utils.factions.factions.IHCF_esshd;
 import me.eqxdev.afreeze.utils.factions.factions.Mango;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
+import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -37,8 +39,9 @@ import java.util.logging.Level;
 /*
 
     TODO:
-        - Player leaving notify staff
         - Bug test
+            - Freeze multible people then unfreeze one.
+            -
  */
 public class Main extends JavaPlugin {
 
@@ -181,6 +184,19 @@ public class Main extends JavaPlugin {
         } else if(plugin.equalsIgnoreCase("Mango")) {
             faction = new Mango();
             getLogger().info("Your server is running: Mango.");
+        } else if(plugin.equalsIgnoreCase("iHCF")) {
+            try {
+                Object esshd = me.esshd.hcf.HCF.getPlugin();
+                faction = new IHCF_esshd();
+                esshd = null;
+                ConfigManager.get("config.yml").set("factions_type", "iHCF_esshd");
+                ConfigManager.save(this,"config.yml");
+                getLogger().info("Your server is running: iHCF (esshd).");
+            } catch (Exception e) {}
+            
+            if(faction == null) {
+                getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
+            }
         }
         return faction!=null;
     }

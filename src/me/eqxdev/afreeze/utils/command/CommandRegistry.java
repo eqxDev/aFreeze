@@ -100,6 +100,8 @@ public class CommandRegistry {
                                 method.invoke(object, sender, label, args);
                             } catch (Exception e) {
                                 sender.sendMessage(ChatColor.RED + "Internal error while attempting to execute /" + label);
+                                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error while executing the command /" + label);
+                                e.printStackTrace();
                             }
                             return true;
                         }
@@ -143,6 +145,8 @@ public class CommandRegistry {
                                 method.invoke(object, sender, label, args);
                             } catch (Exception e) {
                                 sender.sendMessage(ChatColor.RED + "Internal error while attempting to execute /" + label);
+                                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error while executing the command /" + label);
+                                e.printStackTrace();
                             }
                             return true;
                         }

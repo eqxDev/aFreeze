@@ -1,7 +1,10 @@
 package me.eqxdev.afreeze.listeners;
 
+import me.eqxdev.afreeze.Main;
 import me.eqxdev.afreeze.utils.FreezeManager;
+import me.eqxdev.afreeze.utils.FreezeType;
 import me.eqxdev.afreeze.utils.Lang;
+import me.eqxdev.afreeze.utils.redglass.BarrierManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,20 +20,36 @@ public class ConnectionEvents implements Listener {
     @EventHandler
     public void joinEvent(PlayerJoinEvent e) {
         sendMessage("j", e.getPlayer());
+        if(FreezeManager.get().isFreezeAll()) {
+            if(!FreezeManager.get().isFrozen(e.getPlayer())) {
+                FreezeManager.get().add(e.getPlayer(),FreezeType.ALL);
+            }
+        }
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
         sendMessage("l",e.getPlayer());
+        if(FreezeManager.get().isFreezeAll()) {
+            if(FreezeManager.get().isFrozen(e.getPlayer())) {
+                FreezeManager.get().remove(e.getPlayer());
+            }
+        }
     }
 
     private void sendMessage(String connection, Player p) {
         if(!FreezeManager.get().isFrozen(p.getUniqueId())) {
             return;
         }
+        if(FreezeManager.get().isFreezeAll()) {
+            return;
+        }
         String msg = "";
         if(connection.equals("j")) {
             // join
+            if(FreezeManager.get().getType(p) == FreezeType.PLAYER) {
+                BarrierManager.get().add(p);
+            }
             msg = Lang.NOTIFY_JOIN.toString().replace("%name%",p.getName());
         } else {
             // leave
