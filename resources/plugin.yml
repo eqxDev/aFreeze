@@ -3,4 +3,4 @@ author: eqxDev
 version: 3.0
 main: me.eqxdev.afreeze.Main
 description: Just a freeze plugin?
-softdepend: [Factions]
+softdepend: [Factions, TheCore]

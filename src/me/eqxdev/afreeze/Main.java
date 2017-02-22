@@ -16,7 +16,6 @@ import me.eqxdev.afreeze.utils.factions.factions.HCFactions;
 import me.eqxdev.afreeze.utils.factions.factions.IHCF_esshd;
 import me.eqxdev.afreeze.utils.factions.factions.Mango;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
-import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -192,7 +191,7 @@ public class Main extends JavaPlugin {
                 ConfigManager.get("config.yml").set("factions_type", "iHCF_esshd");
                 ConfigManager.save(this,"config.yml");
                 getLogger().info("Your server is running: iHCF (esshd).");
-            } catch (Exception e) {}
+            } catch (NoClassDefFoundError e) {}
 
             if(faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
