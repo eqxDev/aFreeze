@@ -11,10 +11,7 @@ import me.eqxdev.afreeze.utils.Lang;
 import me.eqxdev.afreeze.utils.chatroom.ChatManager;
 import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
-import me.eqxdev.afreeze.utils.factions.factions.Factions;
-import me.eqxdev.afreeze.utils.factions.factions.HCFactions;
-import me.eqxdev.afreeze.utils.factions.factions.IHCF_esshd;
-import me.eqxdev.afreeze.utils.factions.factions.Mango;
+import me.eqxdev.afreeze.utils.factions.factions.*;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -192,6 +189,16 @@ public class Main extends JavaPlugin {
                 ConfigManager.save(this,"config.yml");
                 getLogger().info("Your server is running: iHCF (esshd).");
             } catch (NoClassDefFoundError e) {}
+            if(faction == null) {
+                try {
+                    Object customhcf = com.customhcf.hcf.HCF.getPlugin();
+                    faction = new IHCF_customhcf();
+                    customhcf = null;
+                    ConfigManager.get("config.yml").set("factions_type", "iHCF_customhcf");
+                    ConfigManager.save(this,"config.yml");
+                    getLogger().info("Your server is running: iHCF (customhcf).");
+                } catch (NoClassDefFoundError e) {}
+            }
 
             if(faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
@@ -199,6 +206,9 @@ public class Main extends JavaPlugin {
         } else if(plugin.equalsIgnoreCase("iHCF_esshd")) {
             faction = new IHCF_esshd();
             getLogger().info("Your server is running: iHCF (esshd).");
+        } else if(plugin.equalsIgnoreCase("iHCF_customhcf")) {
+            faction = new IHCF_customhcf();
+            getLogger().info("Your server is running: iHCF (customhcf).");
         }
         return faction!=null;
     }
