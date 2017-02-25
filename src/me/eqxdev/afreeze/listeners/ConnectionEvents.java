@@ -1,11 +1,10 @@
 package me.eqxdev.afreeze.listeners;
 
-import me.eqxdev.afreeze.Main;
+import me.eqxdev.afreeze.utils.BukkitUtils;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.FreezeType;
 import me.eqxdev.afreeze.utils.Lang;
 import me.eqxdev.afreeze.utils.redglass.BarrierManager;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -58,7 +57,7 @@ public class ConnectionEvents implements Listener {
         if(msg.equals("")) {
             return;
         }
-        for(Player t : Bukkit.getOnlinePlayers()) {
+        for(Player t : BukkitUtils.getOnlinePlayers()) {
             if(t.hasPermission(Lang.PERM_FREEZE_NOTIFY.toString()) || t.isOp()) {
                 t.sendMessage(msg);
             }

@@ -1,6 +1,7 @@
 package me.eqxdev.afreeze.commands;
 
 import me.eqxdev.afreeze.Main;
+import me.eqxdev.afreeze.utils.BukkitUtils;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.FreezeType;
 import me.eqxdev.afreeze.utils.Lang;
@@ -9,8 +10,6 @@ import me.eqxdev.afreeze.utils.redglass.BarrierManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.UUID;
 
 /**
  * Created by eqxDev on 03/02/2017.
@@ -99,7 +98,7 @@ public class FreezeCommand {
                         Lang.UNFREEZE_ALL.send(sender);
                         Bukkit.broadcastMessage(Lang.UNFREEZE_ALL_BROADCAST.toString());
                         FreezeManager.get().setFreezeAll(false);
-                        for (Player t : Bukkit.getOnlinePlayers()) {
+                        for (Player t : BukkitUtils.getOnlinePlayers()) {
                             if (FreezeManager.get().isFrozen(t)) {
                                 FreezeManager.get().remove(t);
                             }
@@ -110,7 +109,7 @@ public class FreezeCommand {
                         Lang.FREEZE_ALL.send(sender);
                         Bukkit.broadcastMessage(Lang.FREEZE_ALL_BROADCAST.toString());
                         FreezeManager.get().setFreezeAll(true);
-                        for (Player t : Bukkit.getOnlinePlayers()) {
+                        for (Player t : BukkitUtils.getOnlinePlayers()) {
                             if(!t.hasPermission(Lang.PERM_FREEZE_SERVER_BYPASS.toString())) {
                                 FreezeManager.get().add(t, FreezeType.NO_GLASS);
                             }

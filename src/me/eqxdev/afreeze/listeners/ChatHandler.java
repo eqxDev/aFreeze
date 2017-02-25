@@ -1,5 +1,6 @@
 package me.eqxdev.afreeze.listeners;
 
+import me.eqxdev.afreeze.utils.BukkitUtils;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.Lang;
 import me.eqxdev.afreeze.utils.chatroom.ChatManager;
@@ -21,21 +22,20 @@ public class ChatHandler implements Listener {
     public void chat(AsyncPlayerChatEvent e) {
         if(FreezeManager.get().isFreezeAll() && !e.getPlayer().hasPermission(Lang.PERM_FREEZE_SERVER_BYPASS.toString())) {
             e.setCancelled(true);
+            for(Player p : BukkitUtils.getOnlinePlayers()) {
+                p.getName();
+            }
             return;
         }
 
         if(ChatManager.chatrooms.size() > 0) {
             if(FreezeManager.get().isFrozen(e.getPlayer()) || ChatManager.chatrooms.containsKey(e.getPlayer().getUniqueId())) {
                 if(!isOnline(ChatManager.get().getChatRoom(e.getPlayer().getUniqueId()).getPlayers())) {
-                    System.out.println(e.getPlayer() + " 1");
                     return;
                 }
-                System.out.println(e.getPlayer() + " 2");
                 ChatManager.get().getChatRoom(e.getPlayer().getUniqueId()).sendMessage(e.getPlayer().getName(),e.getMessage());
-                System.out.println(e.getPlayer() + " 3");
                 e.setCancelled(true);
             } else {
-                System.out.println(e.getPlayer() + " 4");
                 for(UUID players : ChatManager.players.keySet()) {
                     e.getRecipients().remove(Bukkit.getPlayer(players));
                 }
@@ -51,7 +51,6 @@ public class ChatHandler implements Listener {
                 online++;
             }
         }
-        System.out.println(online + " 5");
         return online > 1;
     }
 
