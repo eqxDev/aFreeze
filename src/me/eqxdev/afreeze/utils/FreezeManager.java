@@ -56,7 +56,9 @@ public class FreezeManager {
                     if (frozen > 1) {
                         ChatManager.get().remove(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner(), p.getUniqueId());
                     } else {
-                        ChatManager.get().delete(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner());
+                        try {
+                            ChatManager.get().delete(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner());
+                        } catch (NullPointerException ex) {}
                     }
                 }
             } else {

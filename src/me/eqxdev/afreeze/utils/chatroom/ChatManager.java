@@ -64,6 +64,8 @@ public class ChatManager {
         for(UUID uuid : getPlayerChatRoom(owner)) {
             players.remove(uuid);
         }
-        chatrooms.remove(owner);
+        if(chatrooms.containsKey(owner)) {
+            chatrooms.remove(owner);
+        }
     }
 }

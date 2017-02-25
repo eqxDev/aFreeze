@@ -4,6 +4,8 @@ import me.eqxdev.afreeze.utils.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -29,6 +31,14 @@ public class ChatRoom {
                 p.sendMessage(format.replace("%name%", name).replace("%msg%", msg));
             }
         }
+    }
+
+    public List<UUID> getPlayers() {
+        List<UUID> uuids = new ArrayList<>();
+        for(UUID uuid : ChatManager.get().getPlayerChatRoom(owner)) {
+            uuids.add(uuid);
+        }
+        return uuids;
     }
 
     public UUID getOwner() {

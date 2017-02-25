@@ -19,6 +19,7 @@
 # iHCF:
 #  More specific:
 #   - iHCF_esshd
+#   - iHCF_customhcf
 #   There are multible versions of iHCF doing "iHCF" will automatically find what version you are using
 #   then update this file. If your version is not supported please contact me on spigot. https://www.spigotmc.org/members/eqx.24492/
 #

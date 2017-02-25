@@ -26,10 +26,18 @@ public class FreezeCommand {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
+                    if(!(args.length > 1)) {
+                       Lang.FREEZE_HELP.send(sender);
+                       return;
+                    }
                     Player t = Bukkit.getPlayer(args[1]);
-                    if (t == null) {
+                    if (t == null && t.getName().equals(sender.getName())) {
                         // offline
                         Lang.PLAYER_NOT_FOUND.send(sender);
+                        return;
+                    }
+                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                        Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     t.openInventory(Main.get().generateInventory());
@@ -39,10 +47,18 @@ public class FreezeCommand {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
+                    if(!(args.length > 1)) {
+                        Lang.FREEZE_HELP.send(sender);
+                        return;
+                    }
                     Player t = Bukkit.getPlayer(args[1]);
-                    if (t == null) {
+                    if (t == null && t.getName().equals(sender.getName())) {
                         // offline
                         Lang.PLAYER_NOT_FOUND.send(sender);
+                        return;
+                    }
+                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                        Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     toggle(t, sender, FreezeType.NO_GLASS);
@@ -51,14 +67,22 @@ public class FreezeCommand {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
+                    if(!(args.length > 1)) {
+                        Lang.FREEZE_HELP.send(sender);
+                        return;
+                    }
                     if(!Main.get().factionHook) {
                         Lang.ERROR_FACTION_HOOK.send(sender);
                         return;
                     }
                     Player t = Bukkit.getPlayer(args[1]);
-                    if (t == null) {
+                    if (t == null && t.getName().equals(sender.getName())) {
                         // offline
                         Lang.PLAYER_NOT_FOUND.send(sender);
+                        return;
+                    }
+                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                        Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     for(Player player : Main.get().getFaction().getAllPlayerFor(t)) {
@@ -99,9 +123,13 @@ public class FreezeCommand {
                         return;
                     }
                     Player t = Bukkit.getPlayer(args[0]);
-                    if (t == null) {
+                    if (t == null && t.getName().equals(sender.getName())) {
                         // offline
                         Lang.PLAYER_NOT_FOUND.send(sender);
+                        return;
+                    }
+                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                        Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     toggle(t, sender, FreezeType.PLAYER);
@@ -119,6 +147,9 @@ public class FreezeCommand {
             if(FreezeManager.get().getType(t) == FreezeType.PLAYER) {
                 BarrierManager.get().get(t.getUniqueId()).update(true);
                 BarrierManager.get().remove(t.getUniqueId());
+            }
+            if(FreezeManager.get().getType(t) == FreezeType.HACKER) {
+                t.closeInventory();
             }
             FreezeManager.get().remove(t);
             Lang.UNFROZEN.send(t);
