@@ -220,7 +220,7 @@ public class Main extends JavaPlugin {
         }
         return faction!=null;
     }
-    private static final String USER_AGENT  = "MyUserAgent";// Change this!
+    private static final String USER_AGENT  = "aFreeze";
     private static final String REQUEST_URL = "https://api.spiget.org/v2/resources/11582/versions";
     public static boolean NEW_UPDATE = false;
     public static String NEW_UPDATE_VER = "";
@@ -244,7 +244,7 @@ public class Main extends JavaPlugin {
                 NEW_UPDATE_VER = version.get("name").toString();
                 NEW_UPDATE = true;
             }
-
+            connection.disconnect();
         } catch(IOException | ParseException e) {
             getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
         }

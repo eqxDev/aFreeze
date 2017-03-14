@@ -13,10 +13,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 /**
  * Created by eqxDev on 13/02/2017.
  */
 public class ConnectionEvents implements Listener {
+
+    private List<UUID> users = new ArrayList<>();
 
     @EventHandler
     public void joinEvent(PlayerJoinEvent e) {
@@ -26,12 +32,13 @@ public class ConnectionEvents implements Listener {
                 FreezeManager.get().add(e.getPlayer(),FreezeType.ALL);
             }
         }
-        if((e.getPlayer().isOp() || e.getPlayer().hasPermission(Lang.PERM_UPDATE.toString())) && Main.NEW_UPDATE) {
+        if((e.getPlayer().isOp() || e.getPlayer().hasPermission(Lang.PERM_UPDATE.toString())) && Main.NEW_UPDATE && !users.contains(e.getPlayer().getUniqueId())) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
                     if(e.getPlayer() != null) {
                         e.getPlayer().sendMessage(Lang.NEW_UPDATE.toString().replace("%version%", Main.NEW_UPDATE_VER));
+                        users.add(e.getPlayer().getUniqueId());
                     }
                 }
             }.runTaskLater(Main.get(),20*5);
