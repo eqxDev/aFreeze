@@ -22,11 +22,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.simple.parser.*;
 import java.util.logging.Level;
 
 /**
@@ -76,6 +79,7 @@ public class Main extends JavaPlugin {
 
         BukkitTask bt = new FreezeRunnable().runTaskTimer(this,10L,10L);
         generateInventory();
+        update();
     }
 
     @Override
@@ -216,5 +220,33 @@ public class Main extends JavaPlugin {
         }
         return faction!=null;
     }
+    private static final String USER_AGENT  = "MyUserAgent";// Change this!
+    private static final String REQUEST_URL = "https://api.spiget.org/v2/resources/11582/versions";
+    public static boolean NEW_UPDATE = false;
+    public static String NEW_UPDATE_VER = "";
+    private void update() {
+        try {
+            URL url = new URL(REQUEST_URL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.addRequestProperty("User-Agent" , USER_AGENT);
 
+            InputStream inputStream = connection.getInputStream();
+            InputStreamReader reader = new InputStreamReader(inputStream);
+            JSONArray versions = (JSONArray) JSONValue.parseWithException(reader);
+            JSONObject version = (JSONObject) JSONValue.parseWithException(versions.get(versions.size()-1).toString());
+            if(version.get("name").equals(getDescription().getVersion())) {
+                getServer().getLogger().log(Level.INFO,"You are currently running the newest version.");
+                NEW_UPDATE = false;
+                NEW_UPDATE_VER = "";
+            } else {
+                getServer().getLogger().log(Level.WARNING,"There is a new version available " + version.get("name").toString() + ".");
+                getServer().getLogger().log(Level.WARNING,"https://www.spigotmc.org/resources/afreeze.11582/updates");
+                NEW_UPDATE_VER = version.get("name").toString();
+                NEW_UPDATE = true;
+            }
+
+        } catch(IOException | ParseException e) {
+            getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+        }
+    }
 }

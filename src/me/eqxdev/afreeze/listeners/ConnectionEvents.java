@@ -1,5 +1,6 @@
 package me.eqxdev.afreeze.listeners;
 
+import me.eqxdev.afreeze.Main;
 import me.eqxdev.afreeze.utils.BukkitUtils;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.FreezeType;
@@ -10,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Created by eqxDev on 13/02/2017.
@@ -23,6 +25,16 @@ public class ConnectionEvents implements Listener {
             if(!FreezeManager.get().isFrozen(e.getPlayer())) {
                 FreezeManager.get().add(e.getPlayer(),FreezeType.ALL);
             }
+        }
+        if((e.getPlayer().isOp() || e.getPlayer().hasPermission(Lang.PERM_UPDATE.toString())) && Main.NEW_UPDATE) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if(e.getPlayer() != null) {
+                        e.getPlayer().sendMessage(Lang.NEW_UPDATE.toString().replace("%version%", Main.NEW_UPDATE_VER));
+                    }
+                }
+            }.runTaskLater(Main.get(),20*5);
         }
     }
 
