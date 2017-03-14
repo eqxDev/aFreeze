@@ -13,6 +13,7 @@ import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import me.eqxdev.afreeze.utils.factions.factions.*;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
+import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -177,6 +178,9 @@ public class Main extends JavaPlugin {
         } else if(plugin.equalsIgnoreCase("Factions")) {
             faction = new Factions();
             getLogger().info("Your server is running: Factions.");
+        } else if(plugin.equalsIgnoreCase("FactionsUUID")) {
+            faction = new FactionsUUID();
+            getLogger().info("Your server is running: FactionsUUID.");
         } else if(plugin.equalsIgnoreCase("Mango")) {
             faction = new Mango();
             getLogger().info("Your server is running: Mango.");
