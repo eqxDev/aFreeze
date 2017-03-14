@@ -21,7 +21,7 @@ public class FreezeCommand {
         if(sender.isOp() && sender.hasPermission(Lang.PERM_FREEZE.toString())) {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("-h")) { // hacker mode
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString())) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString()) || !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -42,7 +42,7 @@ public class FreezeCommand {
                     t.openInventory(Main.get().generateInventory());
                     toggle(t, sender, FreezeType.HACKER);
                 } else if (args[0].equalsIgnoreCase("-g")) { // No glass
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString())) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString()) || !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -62,7 +62,7 @@ public class FreezeCommand {
                     }
                     toggle(t, sender, FreezeType.NO_GLASS);
                 } else if (args[0].equalsIgnoreCase("-f")) { // faction
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString())) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString()) || !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -88,7 +88,7 @@ public class FreezeCommand {
                         toggle(player, sender, FreezeType.FACTION);
                     }
                 } else if (args[0].equalsIgnoreCase("-all")) { // all
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString())) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString()) || !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -117,7 +117,7 @@ public class FreezeCommand {
                     }
 
                 } else { // normal
-                    if(!sender.hasPermission(Lang.PERM_FREEZE.toString())) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE.toString()) || !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
