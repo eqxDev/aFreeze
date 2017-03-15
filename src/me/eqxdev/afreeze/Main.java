@@ -15,12 +15,15 @@ import me.eqxdev.afreeze.utils.factions.factions.*;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
 import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -28,6 +31,8 @@ import org.json.simple.JSONValue;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import org.json.simple.parser.*;
 import java.util.logging.Level;
@@ -220,33 +225,94 @@ public class Main extends JavaPlugin {
         }
         return faction!=null;
     }
-    private static final String USER_AGENT  = "aFreeze";
-    private static final String REQUEST_URL = "https://api.spiget.org/v2/resources/11582/versions";
+
     public static boolean NEW_UPDATE = false;
     public static String NEW_UPDATE_VER = "";
-    private void update() {
-        try {
-            URL url = new URL(REQUEST_URL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.addRequestProperty("User-Agent" , USER_AGENT);
 
-            InputStream inputStream = connection.getInputStream();
-            InputStreamReader reader = new InputStreamReader(inputStream);
-            JSONArray versions = (JSONArray) JSONValue.parseWithException(reader);
-            JSONObject version = (JSONObject) JSONValue.parseWithException(versions.get(versions.size()-1).toString());
-            if(version.get("name").equals(getDescription().getVersion())) {
-                getServer().getLogger().log(Level.INFO,"You are currently running the newest version.");
-                NEW_UPDATE = false;
-                NEW_UPDATE_VER = "";
-            } else {
-                getServer().getLogger().log(Level.WARNING,"There is a new version available " + version.get("name").toString() + ".");
-                getServer().getLogger().log(Level.WARNING,"https://www.spigotmc.org/resources/afreeze.11582/updates");
-                NEW_UPDATE_VER = version.get("name").toString();
-                NEW_UPDATE = true;
+    private synchronized void update() {
+
+
+        new BukkitRunnable()
+        {
+            @Override
+            public void run() {
+
+            URL localURL = null;
+                try
+                {
+                    localURL = new URL("http://freetexthost.com/3ndetv1vmq");
+                }
+                catch (MalformedURLException localMalformedURLException)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                HttpURLConnection localHttpURLConnection = null;
+                try
+                {
+                    localHttpURLConnection = (HttpURLConnection)localURL.openConnection();
+                }
+                catch (IOException localIOException1)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                try
+                {
+                    localHttpURLConnection.setRequestMethod("GET");
+                }
+                catch (ProtocolException localProtocolException)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                try
+                {
+                    localHttpURLConnection.connect();
+                }
+                catch (IOException localIOException2)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                BufferedReader localBufferedReader = null;
+                try
+                {
+                    localBufferedReader = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
+                }
+                catch (IOException localIOException3)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                int i = 0;
+                String get_version = "not changed";
+                try
+                {
+                    String str;
+                    while ((str = localBufferedReader.readLine()) != null) {
+                        if (str.startsWith("CurrentVersion: ")) {
+                            if(str.equalsIgnoreCase("CurrentVersion: " + getDescription().getVersion())) {
+                                // newest
+                                i = 1;
+                            }
+                            get_version = str.replaceFirst("CurrentVersion: ", "");
+                        }
+                    }
+                }
+                catch (IOException localIOException4)
+                {
+                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                }
+                if (i == 0)
+                {
+                    getServer().getLogger().log(Level.WARNING,"There is a new version available (" + get_version + ").");
+                    getServer().getLogger().log(Level.WARNING,"https://www.spigotmc.org/resources/afreeze.11582/updates");
+                    NEW_UPDATE_VER = get_version;
+                    NEW_UPDATE = true;
+                }
+                else
+                {
+                    getServer().getLogger().log(Level.INFO,"You are currently running the newest version.");
+                    NEW_UPDATE = false;
+                    NEW_UPDATE_VER = "";
+                }
             }
-            connection.disconnect();
-        } catch(IOException | ParseException e) {
-            getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
-        }
+        }.runTaskAsynchronously(this);
     }
 }

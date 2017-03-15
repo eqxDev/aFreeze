@@ -33,7 +33,7 @@ public enum Lang {
     NOTIFY_JOIN("NOTIFY_JOIN", "&c%name% has joined the server while frozen."),
     NO_PERMISSION("NO_PERMISSION", "&cNo Permission."),
     ERROR_FACTION_HOOK("ERROR_FACTION_HOOK","&cThe faction hook has been disabled, check console and your config file."),
-    NEW_UPDATE("NEW_UPDATE", "&7[&caFreeze&7] A new update is available: %version%."),
+    NEW_UPDATE("NEW_UPDATE", "&7[&caFreeze&7] A new update is available: (%version%)."),
 
     PERM_FREEZE_NOTIFY("PERM_FREEZE_NOTIFY", "afreeze.notify"),
     PERM_FREEZE_BYPASS("PERM_FREEZE_BYPASS", "afreeze.bypass"),
