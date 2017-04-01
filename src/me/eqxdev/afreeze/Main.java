@@ -18,6 +18,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -163,6 +164,8 @@ public class Main extends JavaPlugin {
     private Inventory inventory = null;
     public String titleInv = null;
     public Inventory generateInventory() {
+        ConfigurationSection section = ConfigManager.get("config.yml").getConfigurationSection("inventory");
+        for(section.)
         if(titleInv == null) {
             titleInv = Lang.FROZEN_INV_TITLE.toString().substring(0,31);
         }
