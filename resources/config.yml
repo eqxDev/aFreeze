@@ -38,15 +38,8 @@ factions_type: 'add_faction_here'
 
 #
 # This is the inventory that will show when you are frozen with the -h (hacker) flag
-# every second (by default) the inventory will be opened again so the player cannot open their mod
+# every second the inventory will be opened again so the player cannot open their mod
 # menu.
-#
-
-#
-# How often the inventory will be re-opened in ticks (20 Ticks = 1 Second).
-#
-inventory-update: 20
-
 #
 # Customise the items inside the inventory.
 #

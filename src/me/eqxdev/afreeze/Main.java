@@ -198,8 +198,6 @@ public class Main extends JavaPlugin {
                 Object esshd = me.esshd.hcf.HCF.getPlugin();
                 faction = new IHCF_esshd();
                 esshd = null;
-                ConfigManager.get("config.yml").set("factions_type", "iHCF_esshd");
-                ConfigManager.save(this,"config.yml");
                 getLogger().info("Your server is running: iHCF (esshd).");
             } catch (NoClassDefFoundError e) {}
             if(faction == null) {
@@ -207,8 +205,6 @@ public class Main extends JavaPlugin {
                     Object customhcf = com.customhcf.hcf.HCF.getPlugin();
                     faction = new IHCF_customhcf();
                     customhcf = null;
-                    ConfigManager.get("config.yml").set("factions_type", "iHCF_customhcf");
-                    ConfigManager.save(this,"config.yml");
                     getLogger().info("Your server is running: iHCF (customhcf).");
                 } catch (NoClassDefFoundError e) {}
             }
@@ -216,12 +212,6 @@ public class Main extends JavaPlugin {
             if(faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
             }
-        } else if(plugin.equalsIgnoreCase("iHCF_esshd")) {
-            faction = new IHCF_esshd();
-            getLogger().info("Your server is running: iHCF (esshd).");
-        } else if(plugin.equalsIgnoreCase("iHCF_customhcf")) {
-            faction = new IHCF_customhcf();
-            getLogger().info("Your server is running: iHCF (customhcf).");
         }
         return faction!=null;
     }
