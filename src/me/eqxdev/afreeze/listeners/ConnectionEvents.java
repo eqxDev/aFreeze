@@ -1,6 +1,7 @@
 package me.eqxdev.afreeze.listeners;
 
 import me.eqxdev.afreeze.Main;
+import me.eqxdev.afreeze.utils.BukkitUtils;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.FreezeType;
 import me.eqxdev.afreeze.utils.Lang;

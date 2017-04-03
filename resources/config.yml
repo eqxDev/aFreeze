@@ -46,8 +46,8 @@ factions_type: 'add_faction_here'
 
 inventory:
   '0': # Unique id, no two can be the same.
-    name: "Example title" # The display name of the item, supports colour codes.
-    lore: # Lores on the item. Supports colour codes.
+    name: "Example title" # The display name of the item, supports colour codes. (optional)
+    lore: # Lores on the item. Supports colour codes. (optional)
       - "Line 1"
       - "Line 2"
     item: "STAINED_GLASS_PANE:14" # The item for example: "STONE" or STAINED_GLASS:3"  http://minecraft-ids.grahamedgecombe.com/    < after the minecraft: is the item name.

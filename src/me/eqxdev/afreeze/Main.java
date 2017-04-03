@@ -12,6 +12,8 @@ import me.eqxdev.afreeze.utils.chatroom.ChatManager;
 import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import me.eqxdev.afreeze.utils.factions.factions.*;
+import me.eqxdev.afreeze.utils.inventory.InventoryGenerator;
+import me.eqxdev.afreeze.utils.inventory.InventoryItem;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
 import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
@@ -36,6 +38,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import org.json.simple.parser.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -159,27 +164,34 @@ public class Main extends JavaPlugin {
             getServer().getLogger().log(Level.WARNING, "[aFreeze]: Report this stack trace to eqx.");
         }
 
+        List<InventoryItem> items = new ArrayList<>();
+        for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
+            String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
+            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".postition");
+            String name = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
+                name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
+            }
+            List<String> lore = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
+                lore = ConfigManager.get("config.yml").getStringList("inventory." + str + ".lore");
+            }
+            InventoryItem ii = new InventoryItem();
+            ii.setLore(lore);
+            ii.setSlot(position);
+            ii.setTitle(name);
+            ii.setType(item);
+            ii.refreshCache();
+            items.add(ii);
+        }
+        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0,31), 1);
+        inv.items(items);
+        InventoryGenerator.getInventories().put("frozen", inv);
     }
 
-    private Inventory inventory = null;
-    public String titleInv = null;
+
     public Inventory generateInventory() {
-        ConfigurationSection section = ConfigManager.get("config.yml").getConfigurationSection("inventory");
-        for(section.)
-        if(titleInv == null) {
-            titleInv = Lang.FROZEN_INV_TITLE.toString().substring(0,31);
-        }
-        if(inventory == null) {
-            inventory = Bukkit.createInventory(null, 9, titleInv);
-            ItemStack isis = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short)14);
-            ItemMeta imim = isis.getItemMeta();
-            imim.setDisplayName(Lang.FROZEN_ITEM_TITLE.toString());
-            isis.setItemMeta(imim);
-            for(int i=0; i < 9; i++) {
-                inventory.setItem(i,isis);
-            }
-        }
-        return inventory;
+        return InventoryGenerator.getInventories().get("frozen").getInventory();
     }
 
     private boolean setupFaction() {

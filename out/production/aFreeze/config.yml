@@ -35,3 +35,28 @@ factions_type: 'add_faction_here'
 # through spigot: https://www.spigotmc.org/members/eqx.24492/ and I may add it
 # to the supported list.
 #
+
+#
+# This is the inventory that will show when you are frozen with the -h (hacker) flag
+# every second the inventory will be opened again so the player cannot open their mod
+# menu.
+#
+# Customise the items inside the inventory.
+#
+
+inventory:
+  '0': # Unique id, no two can be the same.
+    name: "Example title" # The display name of the item, supports colour codes. (optional)
+    lore: # Lores on the item. Supports colour codes. (optional)
+      - "Line 1"
+      - "Line 2"
+    item: "STAINED_GLASS_PANE:14" # The item for example: "STONE" or STAINED_GLASS:3"  http://minecraft-ids.grahamedgecombe.com/    < after the minecraft: is the item name.
+    postition: 5 # Where it is in the inventory. 1-9.
+  '1': # Unique id, no two can be the same.
+    name: "&4&lFrozen" # The display name of the item, supports colour codes.
+    lore: # Lores on the item. Supports colour codes.
+      - "&7Please join our teamspeak:"
+      - "ts.server.com"
+      - "&4DO NOT LOGOUT!"
+    item: "APPLE" # The item for example: "STONE" or STAINED_GLASS:3"  http://minecraft-ids.grahamedgecombe.com/    < after the minecraft: is the item name.
+    postition: 6 # Where it is in the inventory. 1-9.

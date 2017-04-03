@@ -6,6 +6,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,4 +45,5 @@ public class InventoryGenerator {
     public void items(InventoryItem item) {
         inv.setItem(item.getSlot(),item.generate());
     }
+    public void items(List<InventoryItem> item) { item.forEach((inventoryItem -> inv.setItem(inventoryItem.getSlot(),inventoryItem.generate()))); }
 }
