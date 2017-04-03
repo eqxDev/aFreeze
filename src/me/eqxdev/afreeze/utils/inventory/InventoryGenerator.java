@@ -28,7 +28,7 @@ public class InventoryGenerator {
 
 
     public InventoryGenerator(String title, int rows) {
-        inv = Bukkit.createInventory(null,rows,title);
+        inv = Bukkit.createInventory(null,rows*9,title);
     }
 
     public Inventory getInventory() {

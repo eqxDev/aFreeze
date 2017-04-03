@@ -1,6 +1,6 @@
 package me.eqxdev.afreeze.utils.inventory;
 
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -48,8 +48,9 @@ public class InventoryItem {
         if(type.contains(":")) {
             String[] types = type.split(":");
             item = new ItemStack(Material.getMaterial(types[0]),1,(short)Short.parseShort(types[1]));
+        } else {
+            item = new ItemStack(Material.getMaterial(type));
         }
-        item = new ItemStack(Material.getMaterial(type));
         ItemMeta im = item.getItemMeta();
         if(title != null) {
             im.setDisplayName(ChatColor.translateAlternateColorCodes('&',title));

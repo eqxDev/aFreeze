@@ -125,7 +125,7 @@ public class Main extends JavaPlugin {
         List<InventoryItem> items = new ArrayList<>();
         for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
             String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
-            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".postition");
+            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".position");
             String name = null;
             if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
                 name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
