@@ -56,15 +56,17 @@ import java.util.logging.Level;
  */
 public class Main extends JavaPlugin {
 
+    public static boolean NEW_UPDATE = false;
+    public static String NEW_UPDATE_VER = "";
     private static Main pl;
-    public static Main get() {return pl;}
-
+    public boolean factionHook = true;
     private YamlConfiguration LANG;
     private File LANG_FILE;
     private CommandRegistry commandRegistry;
-
-    public boolean factionHook = true;
     private Faction faction = null;
+
+    public static Main get() {return pl;}
+
     public Faction getFaction() {
         return faction;
     }
@@ -73,7 +75,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         pl = this;
         lang();
-        ConfigManager.load(this, "config.yml");
+        config();
         this.commandRegistry = new CommandRegistry(this);
 
         ConfigManager.load(this,"config.yml");
@@ -99,13 +101,17 @@ public class Main extends JavaPlugin {
         System.gc();
     }
 
-
     public CommandRegistry getCommandRegistry(){
         return this.commandRegistry;
     }
+
+    // Config file
+
     private void registerCommands() {
         getCommandRegistry().register(new FreezeCommand());
     }
+
+    // Language file
 
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new FreezeHandler(), this);
@@ -114,7 +120,32 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ConnectionEvents(), this);
     }
 
-    // Language file
+    private void config() {
+        ConfigManager.load(this, "config.yml");
+        List<InventoryItem> items = new ArrayList<>();
+        for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
+            String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
+            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".postition");
+            String name = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
+                name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
+            }
+            List<String> lore = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
+                lore = ConfigManager.get("config.yml").getStringList("inventory." + str + ".lore");
+            }
+            InventoryItem ii = new InventoryItem();
+            ii.setLore(lore);
+            ii.setSlot(position);
+            ii.setTitle(name);
+            ii.setType(item);
+            ii.refreshCache();
+            items.add(ii);
+        }
+        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0,31), 1);
+        inv.items(items);
+        InventoryGenerator.getInventories().put("frozen", inv);
+    }
 
     public YamlConfiguration getLang()
     {
@@ -163,32 +194,7 @@ public class Main extends JavaPlugin {
             getServer().getLogger().log(Level.WARNING, "[aFreeze]: Failed to save lang.yml.");
             getServer().getLogger().log(Level.WARNING, "[aFreeze]: Report this stack trace to eqx.");
         }
-
-        List<InventoryItem> items = new ArrayList<>();
-        for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
-            String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
-            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".postition");
-            String name = null;
-            if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
-                name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
-            }
-            List<String> lore = null;
-            if(ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
-                lore = ConfigManager.get("config.yml").getStringList("inventory." + str + ".lore");
-            }
-            InventoryItem ii = new InventoryItem();
-            ii.setLore(lore);
-            ii.setSlot(position);
-            ii.setTitle(name);
-            ii.setType(item);
-            ii.refreshCache();
-            items.add(ii);
-        }
-        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0,31), 1);
-        inv.items(items);
-        InventoryGenerator.getInventories().put("frozen", inv);
     }
-
 
     public Inventory generateInventory() {
         return InventoryGenerator.getInventories().get("frozen").getInventory();
@@ -230,9 +236,6 @@ public class Main extends JavaPlugin {
         }
         return faction!=null;
     }
-
-    public static boolean NEW_UPDATE = false;
-    public static String NEW_UPDATE_VER = "";
 
     private synchronized void update() {
 
