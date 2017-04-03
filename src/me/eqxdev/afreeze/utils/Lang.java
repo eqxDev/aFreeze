@@ -23,7 +23,7 @@ public enum Lang {
     FROZEN_INV_TITLE("FROZEN_INV_TITLE", "&cYou have been frozen please join the teamspeak: ts.teamspeak.com"),
     FROZEN_ITEM_TITLE("FROZEN_ITEM_TITLE", "&cFROZEN!"),
     FROZEN_BUILD("FROZEN_BUILD", "&cYou cannot interact while frozen."),
-    FREEZE_HELP("FREEZE_HELP", "&c/freeze /ss /afreeze (All work - Do for help message) \n&c /ss <player> (Normal) \n /ss -f <player> (Faction) \n /ss -g <player> (No Glass) - /ss -h <player> (Hacker) \n /ss -all (Everyone)"),
+    FREEZE_HELP("FREEZE_HELP", "&c/freeze /ss /afreeze (All work - Do for help message) \n&c /ss <player> (Normal) \n /ss -f <player> (Faction) \n /ss -g <player> (No Glass) - /ss -h <player> (Hacker) \n /ss -all (Everyone) \n /ss about (info)"),
     CHATROOM_CONSOLE_USERNAME("CHATROOM_CONSOLE_USERNAME", "&fConsole"),
     CHATROOM_CONSOLE_JOIN("CHATROOM_CONSOLE_JOIN", "&cNew player has been added to the chat."),
     CHATROOM_CONSOLE_NEW("CHATROOM_CONSOLE_NEW", "&cNew chat has been created."),
@@ -34,6 +34,7 @@ public enum Lang {
     NO_PERMISSION("NO_PERMISSION", "&cNo Permission."),
     ERROR_FACTION_HOOK("ERROR_FACTION_HOOK","&cThe faction hook has been disabled, check console and your config file."),
     NEW_UPDATE("NEW_UPDATE", "&7[&caFreeze&7] A new update is available: (%version%)."),
+    ABOUT("ABOUT", "&caFreeze About:\n &aVersion: &7%version% (&6%newversion%&7)\n &aAuthor: &7%author%\n &aSpigot Link:&7 %url%."),
 
     PERM_FREEZE_NOTIFY("PERM_FREEZE_NOTIFY", "afreeze.notify"),
     PERM_FREEZE_BYPASS("PERM_FREEZE_BYPASS", "afreeze.bypass"),

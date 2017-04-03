@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,7 +48,7 @@ public class InventoryItem {
         ItemStack item = null;
         if(type.contains(":")) {
             String[] types = type.split(":");
-            item = new ItemStack(Material.getMaterial(types[0]),1,(short)Short.parseShort(types[1]));
+            item = new ItemStack(Material.getMaterial(types[0]),1,(short) Integer.parseInt(types[1]));
         } else {
             item = new ItemStack(Material.getMaterial(type));
         }

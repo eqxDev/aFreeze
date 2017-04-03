@@ -136,7 +136,7 @@ public class Main extends JavaPlugin {
             }
             InventoryItem ii = new InventoryItem();
             ii.setLore(lore);
-            ii.setSlot(position);
+            ii.setSlot(position-1);
             ii.setTitle(name);
             ii.setType(item);
             ii.refreshCache();

@@ -61,6 +61,8 @@ public class FreezeCommand {
                         return;
                     }
                     toggle(t, sender, FreezeType.NO_GLASS);
+                } else if (args[0].equalsIgnoreCase("about")) { // No glass
+                    sender.sendMessage(Lang.ABOUT.toString().replace("%version%", Main.get().getDescription().getVersion()).replace("%newversion%", Main.NEW_UPDATE?Main.NEW_UPDATE_VER:"Current").replace("%author%", "eqxDev").replace("%url%", "https://www.spigotmc.org/resources/afreeze.11582/"));
                 } else if (args[0].equalsIgnoreCase("-f")) { // faction
                     if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
