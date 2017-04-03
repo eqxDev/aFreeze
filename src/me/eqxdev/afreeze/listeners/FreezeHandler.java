@@ -3,6 +3,7 @@ package me.eqxdev.afreeze.listeners;
 import me.eqxdev.afreeze.Main;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.Lang;
+import me.eqxdev.afreeze.utils.inventory.InventoryGenerator;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -114,7 +115,7 @@ public class FreezeHandler implements Listener {
     @EventHandler
     public void inventoryClick(InventoryClickEvent e) {
         if(FreezeManager.get().isFrozen(e.getWhoClicked().getUniqueId())) {
-            if(e.getInventory().getTitle().equals(Main.get().titleInv)) {
+            if(e.getInventory().getTitle().equals(InventoryGenerator.getInventories().get("frozen").getInventory().getTitle())) {
                 e.setCancelled(true);
             }
         }

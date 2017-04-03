@@ -12,12 +12,15 @@ import me.eqxdev.afreeze.utils.chatroom.ChatManager;
 import me.eqxdev.afreeze.utils.command.CommandRegistry;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import me.eqxdev.afreeze.utils.factions.factions.*;
+import me.eqxdev.afreeze.utils.inventory.InventoryGenerator;
+import me.eqxdev.afreeze.utils.inventory.InventoryItem;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
 import me.esshd.hcf.HCF;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -35,6 +38,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import org.json.simple.parser.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -50,15 +56,17 @@ import java.util.logging.Level;
  */
 public class Main extends JavaPlugin {
 
+    public static boolean NEW_UPDATE = false;
+    public static String NEW_UPDATE_VER = "";
     private static Main pl;
-    public static Main get() {return pl;}
-
+    public boolean factionHook = true;
     private YamlConfiguration LANG;
     private File LANG_FILE;
     private CommandRegistry commandRegistry;
-
-    public boolean factionHook = true;
     private Faction faction = null;
+
+    public static Main get() {return pl;}
+
     public Faction getFaction() {
         return faction;
     }
@@ -67,7 +75,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         pl = this;
         lang();
-        ConfigManager.load(this, "config.yml");
+        config();
         this.commandRegistry = new CommandRegistry(this);
 
         ConfigManager.load(this,"config.yml");
@@ -93,13 +101,17 @@ public class Main extends JavaPlugin {
         System.gc();
     }
 
-
     public CommandRegistry getCommandRegistry(){
         return this.commandRegistry;
     }
+
+    // Config file
+
     private void registerCommands() {
         getCommandRegistry().register(new FreezeCommand());
     }
+
+    // Language file
 
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new FreezeHandler(), this);
@@ -108,7 +120,32 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ConnectionEvents(), this);
     }
 
-    // Language file
+    private void config() {
+        ConfigManager.load(this, "config.yml");
+        List<InventoryItem> items = new ArrayList<>();
+        for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
+            String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
+            int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".position");
+            String name = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
+                name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
+            }
+            List<String> lore = null;
+            if(ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
+                lore = ConfigManager.get("config.yml").getStringList("inventory." + str + ".lore");
+            }
+            InventoryItem ii = new InventoryItem();
+            ii.setLore(lore);
+            ii.setSlot(position-1);
+            ii.setTitle(name);
+            ii.setType(item);
+            ii.refreshCache();
+            items.add(ii);
+        }
+        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0,31), 1);
+        inv.items(items);
+        InventoryGenerator.getInventories().put("frozen", inv);
+    }
 
     public YamlConfiguration getLang()
     {
@@ -157,26 +194,10 @@ public class Main extends JavaPlugin {
             getServer().getLogger().log(Level.WARNING, "[aFreeze]: Failed to save lang.yml.");
             getServer().getLogger().log(Level.WARNING, "[aFreeze]: Report this stack trace to eqx.");
         }
-
     }
 
-    private Inventory inventory = null;
-    public String titleInv = null;
     public Inventory generateInventory() {
-        if(titleInv == null) {
-            titleInv = Lang.FROZEN_INV_TITLE.toString().substring(0,31);
-        }
-        if(inventory == null) {
-            inventory = Bukkit.createInventory(null, 9, titleInv);
-            ItemStack isis = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short)14);
-            ItemMeta imim = isis.getItemMeta();
-            imim.setDisplayName(Lang.FROZEN_ITEM_TITLE.toString());
-            isis.setItemMeta(imim);
-            for(int i=0; i < 9; i++) {
-                inventory.setItem(i,isis);
-            }
-        }
-        return inventory;
+        return InventoryGenerator.getInventories().get("frozen").getInventory();
     }
 
     private boolean setupFaction() {
@@ -198,8 +219,6 @@ public class Main extends JavaPlugin {
                 Object esshd = me.esshd.hcf.HCF.getPlugin();
                 faction = new IHCF_esshd();
                 esshd = null;
-                ConfigManager.get("config.yml").set("factions_type", "iHCF_esshd");
-                ConfigManager.save(this,"config.yml");
                 getLogger().info("Your server is running: iHCF (esshd).");
             } catch (NoClassDefFoundError e) {}
             if(faction == null) {
@@ -207,8 +226,6 @@ public class Main extends JavaPlugin {
                     Object customhcf = com.customhcf.hcf.HCF.getPlugin();
                     faction = new IHCF_customhcf();
                     customhcf = null;
-                    ConfigManager.get("config.yml").set("factions_type", "iHCF_customhcf");
-                    ConfigManager.save(this,"config.yml");
                     getLogger().info("Your server is running: iHCF (customhcf).");
                 } catch (NoClassDefFoundError e) {}
             }
@@ -216,18 +233,9 @@ public class Main extends JavaPlugin {
             if(faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
             }
-        } else if(plugin.equalsIgnoreCase("iHCF_esshd")) {
-            faction = new IHCF_esshd();
-            getLogger().info("Your server is running: iHCF (esshd).");
-        } else if(plugin.equalsIgnoreCase("iHCF_customhcf")) {
-            faction = new IHCF_customhcf();
-            getLogger().info("Your server is running: iHCF (customhcf).");
         }
         return faction!=null;
     }
-
-    public static boolean NEW_UPDATE = false;
-    public static String NEW_UPDATE_VER = "";
 
     private synchronized void update() {
 
