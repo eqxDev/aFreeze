@@ -1,6 +1,5 @@
 package me.eqxdev.afreeze.utils.factions.factions;
 
-import com.massivecraft.factions.FPlayers;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import me.esshd.hcf.HCF;
 import me.esshd.hcf.faction.type.PlayerFaction;
@@ -19,8 +18,8 @@ public class IHCF_esshd implements Faction {
         List<Player> players = new ArrayList<>();
         PlayerFaction pf = HCF.getPlugin().getFactionManager().getPlayerFaction(p.getUniqueId());
 
-        if(pf != null) {
-            for(Player facPlayer : pf.getOnlinePlayers()) {
+        if (pf != null) {
+            for (Player facPlayer : pf.getOnlinePlayers()) {
                 if (!facPlayer.getName().equals(p.getName())) {
                     players.add(facPlayer);
                 }

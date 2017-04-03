@@ -16,18 +16,18 @@ import org.bukkit.entity.Player;
  */
 public class FreezeCommand {
 
-    @Command(name="freeze",playerOnly = true,description = "Freeze a player",aliases = {"ss","afreeze"})
+    @Command(name = "freeze", playerOnly = true, description = "Freeze a player", aliases = {"ss", "afreeze"})
     public void command(CommandSender sender, String label, String[] args) {
-        if(sender.isOp() && sender.hasPermission(Lang.PERM_FREEZE.toString())) {
+        if (sender.isOp() && sender.hasPermission(Lang.PERM_FREEZE.toString())) {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("-h")) { // hacker mode
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString()) && !sender.isOp()) {
+                    if (!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
-                    if(!(args.length > 1)) {
-                       Lang.FREEZE_HELP.send(sender);
-                       return;
+                    if (!(args.length > 1)) {
+                        Lang.FREEZE_HELP.send(sender);
+                        return;
                     }
                     Player t = Bukkit.getPlayer(args[1]);
                     if (t == null && t.getName().equals(sender.getName())) {
@@ -35,18 +35,18 @@ public class FreezeCommand {
                         Lang.PLAYER_NOT_FOUND.send(sender);
                         return;
                     }
-                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                    if (t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
                         Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     t.openInventory(Main.get().generateInventory());
                     toggle(t, sender, FreezeType.HACKER);
                 } else if (args[0].equalsIgnoreCase("-g")) { // No glass
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString()) && !sender.isOp()) {
+                    if (!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
-                    if(!(args.length > 1)) {
+                    if (!(args.length > 1)) {
                         Lang.FREEZE_HELP.send(sender);
                         return;
                     }
@@ -56,23 +56,23 @@ public class FreezeCommand {
                         Lang.PLAYER_NOT_FOUND.send(sender);
                         return;
                     }
-                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                    if (t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
                         Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
                     toggle(t, sender, FreezeType.NO_GLASS);
                 } else if (args[0].equalsIgnoreCase("about")) { // No glass
-                    sender.sendMessage(Lang.ABOUT.toString().replace("%version%", Main.get().getDescription().getVersion()).replace("%newversion%", Main.NEW_UPDATE?Main.NEW_UPDATE_VER:"Current").replace("%author%", "eqxDev").replace("%url%", "https://www.spigotmc.org/resources/afreeze.11582/"));
+                    sender.sendMessage(Lang.ABOUT.toString().replace("%version%", Main.get().getDescription().getVersion()).replace("%newversion%", Main.NEW_UPDATE ? Main.NEW_UPDATE_VER : "Current").replace("%author%", "eqxDev").replace("%url%", "https://www.spigotmc.org/resources/afreeze.11582/"));
                 } else if (args[0].equalsIgnoreCase("-f")) { // faction
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString()) && !sender.isOp()) {
+                    if (!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
-                    if(!(args.length > 1)) {
+                    if (!(args.length > 1)) {
                         Lang.FREEZE_HELP.send(sender);
                         return;
                     }
-                    if(!Main.get().factionHook) {
+                    if (!Main.get().factionHook) {
                         Lang.ERROR_FACTION_HOOK.send(sender);
                         return;
                     }
@@ -82,15 +82,15 @@ public class FreezeCommand {
                         Lang.PLAYER_NOT_FOUND.send(sender);
                         return;
                     }
-                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                    if (t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
                         Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
-                    for(Player player : Main.get().getFaction().getAllPlayerFor(t)) {
+                    for (Player player : Main.get().getFaction().getAllPlayerFor(t)) {
                         toggle(player, sender, FreezeType.FACTION);
                     }
                 } else if (args[0].equalsIgnoreCase("-all")) { // all
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString()) && !sender.isOp()) {
+                    if (!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -112,14 +112,14 @@ public class FreezeCommand {
                         Bukkit.broadcastMessage(Lang.FREEZE_ALL_BROADCAST.toString());
                         FreezeManager.get().setFreezeAll(true);
                         for (Player t : BukkitUtils.getOnlinePlayers()) {
-                            if(!t.hasPermission(Lang.PERM_FREEZE_SERVER_BYPASS.toString())) {
+                            if (!t.hasPermission(Lang.PERM_FREEZE_SERVER_BYPASS.toString())) {
                                 FreezeManager.get().add(t, FreezeType.NO_GLASS);
                             }
                         }
                     }
 
                 } else { // normal
-                    if(!sender.hasPermission(Lang.PERM_FREEZE.toString()) && !sender.isOp()) {
+                    if (!sender.hasPermission(Lang.PERM_FREEZE.toString()) && !sender.isOp()) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -129,7 +129,7 @@ public class FreezeCommand {
                         Lang.PLAYER_NOT_FOUND.send(sender);
                         return;
                     }
-                    if(t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
+                    if (t.hasPermission(Lang.PERM_FREEZE_BYPASS.toString())) {
                         Lang.FREEZE_CANNOT.send(sender);
                         return;
                     }
@@ -144,21 +144,21 @@ public class FreezeCommand {
     }
 
     private void toggle(Player t, CommandSender sender, FreezeType freezeType) {
-        if(FreezeManager.get().isFrozen(t)) {
-            if(FreezeManager.get().getType(t) == FreezeType.PLAYER) {
+        if (FreezeManager.get().isFrozen(t)) {
+            if (FreezeManager.get().getType(t) == FreezeType.PLAYER) {
                 BarrierManager.get().get(t.getUniqueId()).update(true);
                 BarrierManager.get().remove(t.getUniqueId());
             }
-            if(FreezeManager.get().getType(t) == FreezeType.HACKER) {
+            if (FreezeManager.get().getType(t) == FreezeType.HACKER) {
                 t.closeInventory();
             }
             FreezeManager.get().remove(t);
             Lang.UNFROZEN.send(t);
-            sender.sendMessage(Lang.UNFROZEN_SUCCESS.toString().replace("%p%",t.getName()));
+            sender.sendMessage(Lang.UNFROZEN_SUCCESS.toString().replace("%p%", t.getName()));
         } else {
             FreezeManager.get().add(t, freezeType, sender);
-            sender.sendMessage(Lang.FREEZE_SUCCESS.toString().replace("%p%", t.getName()).replace("%mode%",freezeType.toName()));
-            if(FreezeManager.get().getType(t) == FreezeType.PLAYER) {
+            sender.sendMessage(Lang.FREEZE_SUCCESS.toString().replace("%p%", t.getName()).replace("%mode%", freezeType.toName()));
+            if (FreezeManager.get().getType(t) == FreezeType.PLAYER) {
                 BarrierManager.get().add(t);
             }
         }

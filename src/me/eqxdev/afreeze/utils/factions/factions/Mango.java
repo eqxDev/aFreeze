@@ -1,6 +1,5 @@
 package me.eqxdev.afreeze.utils.factions.factions;
 
-import com.massivecraft.factions.FPlayers;
 import me.eqxdev.afreeze.utils.factions.Faction;
 import org.bukkit.entity.Player;
 import org.zencode.mango.factions.types.PlayerFaction;
@@ -17,8 +16,8 @@ public class Mango implements Faction {
     public List<Player> getAllPlayerFor(Player p) {
         List<Player> players = new ArrayList<>();
         PlayerFaction pf = org.zencode.mango.Mango.getInstance().getFactionManager().getFaction(p);
-        if(pf != null) {
-            for(Player facPlayer : pf.getOnlinePlayers()) {
+        if (pf != null) {
+            for (Player facPlayer : pf.getOnlinePlayers()) {
                 if (!facPlayer.getName().equals(p.getName())) {
                     players.add(facPlayer);
                 }

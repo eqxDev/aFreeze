@@ -15,8 +15,11 @@ import java.util.UUID;
 public class FreezeManager {
 
     private static FreezeManager instance;
+
     public static FreezeManager get() {
-        if(instance == null) {instance = new FreezeManager(); }
+        if (instance == null) {
+            instance = new FreezeManager();
+        }
         return instance;
     }
 
@@ -30,10 +33,11 @@ public class FreezeManager {
         freeze.put(p.getUniqueId(), FreezeType.PLAYER);
         message(p);
     }
+
     public void add(Player p, FreezeType type, CommandSender sender) {
         freeze.put(p.getUniqueId(), type);
         message(p);
-        ChatManager.get().add(((Player)sender).getUniqueId(),p.getUniqueId());
+        ChatManager.get().add(((Player) sender).getUniqueId(), p.getUniqueId());
     }
 
     public void add(Player p, FreezeType type) {
@@ -42,10 +46,10 @@ public class FreezeManager {
 
     public void remove(Player p) {
         freeze.remove(p.getUniqueId());
-        if(ChatManager.get().inChatRoom(p.getUniqueId())) {
-            if(ChatManager.get().getPlayerChatRoom(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner()).size() > 1) { // 0 is admin 1 is someone 1 > is more than one person
+        if (ChatManager.get().inChatRoom(p.getUniqueId())) {
+            if (ChatManager.get().getPlayerChatRoom(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner()).size() > 1) { // 0 is admin 1 is someone 1 > is more than one person
                 int frozen = 0;
-                for(UUID uuid :ChatManager.get().getPlayerChatRoom(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner())) {
+                for (UUID uuid : ChatManager.get().getPlayerChatRoom(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner())) {
                     Player t = Bukkit.getPlayer(uuid);
                     if (t == null) {
                         continue;
@@ -58,7 +62,8 @@ public class FreezeManager {
                     } else {
                         try {
                             ChatManager.get().delete(ChatManager.get().getChatRoom(p.getUniqueId()).getOwner());
-                        } catch (NullPointerException ex) {}
+                        } catch (NullPointerException ex) {
+                        }
                     }
                 }
             } else {
@@ -66,15 +71,22 @@ public class FreezeManager {
             }
         }
     }
+
     public boolean isFrozen(Player p) {
         return freeze.containsKey(p.getUniqueId());
     }
+
     public boolean isFrozen(UUID p) {
         return freeze.containsKey(p);
     }
-    public FreezeType getType(Player p) { return freeze.get(p.getUniqueId()); }
 
-    public FreezeType getType(UUID p) { return freeze.get(p); }
+    public FreezeType getType(Player p) {
+        return freeze.get(p.getUniqueId());
+    }
+
+    public FreezeType getType(UUID p) {
+        return freeze.get(p);
+    }
 
     public void message(Player p) {
         Lang.FROZEN.send(p);
@@ -90,5 +102,7 @@ public class FreezeManager {
         this.freezeAll = freezeAll;
     }
 
-    public boolean hasFrozenPlayers() {return freeze.size() > 0; }
+    public boolean hasFrozenPlayers() {
+        return freeze.size() > 0;
+    }
 }

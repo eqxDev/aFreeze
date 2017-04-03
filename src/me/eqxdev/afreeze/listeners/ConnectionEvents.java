@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -27,57 +28,67 @@ public class ConnectionEvents implements Listener {
     @EventHandler
     public void joinEvent(PlayerJoinEvent e) {
         sendMessage("j", e.getPlayer());
-        if(FreezeManager.get().isFreezeAll()) {
-            if(!FreezeManager.get().isFrozen(e.getPlayer())) {
-                FreezeManager.get().add(e.getPlayer(),FreezeType.ALL);
+        if (FreezeManager.get().isFreezeAll()) {
+            if (!FreezeManager.get().isFrozen(e.getPlayer())) {
+                FreezeManager.get().add(e.getPlayer(), FreezeType.ALL);
             }
         }
-        if((e.getPlayer().isOp() || e.getPlayer().hasPermission(Lang.PERM_UPDATE.toString())) && Main.NEW_UPDATE && !users.contains(e.getPlayer().getUniqueId())) {
+        if ((e.getPlayer().isOp() || e.getPlayer().hasPermission(Lang.PERM_UPDATE.toString())) && Main.NEW_UPDATE && !users.contains(e.getPlayer().getUniqueId())) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    if(e.getPlayer() != null) {
+                    if (e.getPlayer() != null) {
                         e.getPlayer().sendMessage(Lang.NEW_UPDATE.toString().replace("%version%", Main.NEW_UPDATE_VER));
                         users.add(e.getPlayer().getUniqueId());
                     }
                 }
-            }.runTaskLater(Main.get(),20*5);
+            }.runTaskLater(Main.get(), 20 * 5);
         }
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        sendMessage("l",e.getPlayer());
-        if(FreezeManager.get().isFreezeAll()) {
-            if(FreezeManager.get().isFrozen(e.getPlayer())) {
+        if (FreezeManager.get().isFreezeAll()) {
+            if (FreezeManager.get().isFrozen(e.getPlayer())) {
+                FreezeManager.get().remove(e.getPlayer());
+            }
+        } else {
+            sendMessage("l", e.getPlayer());
+        }
+    }
+
+    @EventHandler
+    public void onKick(PlayerKickEvent e) {
+        if (!FreezeManager.get().isFreezeAll()) {
+            if (FreezeManager.get().isFrozen(e.getPlayer())) {
                 FreezeManager.get().remove(e.getPlayer());
             }
         }
     }
 
     private void sendMessage(String connection, Player p) {
-        if(!FreezeManager.get().isFrozen(p.getUniqueId())) {
+        if (!FreezeManager.get().isFrozen(p.getUniqueId())) {
             return;
         }
-        if(FreezeManager.get().isFreezeAll()) {
+        if (FreezeManager.get().isFreezeAll()) {
             return;
         }
         String msg = "";
-        if(connection.equals("j")) {
+        if (connection.equals("j")) {
             // join
-            if(FreezeManager.get().getType(p) == FreezeType.PLAYER) {
+            if (FreezeManager.get().getType(p) == FreezeType.PLAYER) {
                 BarrierManager.get().add(p);
             }
-            msg = Lang.NOTIFY_JOIN.toString().replace("%name%",p.getName());
+            msg = Lang.NOTIFY_JOIN.toString().replace("%name%", p.getName());
         } else {
             // leave
-            msg = Lang.NOTIFY_LEAVE.toString().replace("%name%",p.getName());
+            msg = Lang.NOTIFY_LEAVE.toString().replace("%name%", p.getName());
         }
-        if(msg.equals("")) {
+        if (msg.equals("")) {
             return;
         }
-        for(Player t : BukkitUtils.getOnlinePlayers()) {
-            if(t.hasPermission(Lang.PERM_FREEZE_NOTIFY.toString()) || t.isOp()) {
+        for (Player t : BukkitUtils.getOnlinePlayers()) {
+            if (t.hasPermission(Lang.PERM_FREEZE_NOTIFY.toString()) || t.isOp()) {
                 t.sendMessage(msg);
             }
         }

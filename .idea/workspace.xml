@@ -2,18 +2,35 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="freeze:jar" />
+      <artifact name="aFreeze:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a9b244-d7f1-4486-a36d-2b7d077c5682" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/BukkitUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/freeze/me/eqxdev/afreeze/listeners/ChatHandler.class" afterPath="$PROJECT_DIR$/out/production/freeze/me/eqxdev/afreeze/listeners/ChatHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/freeze.iml" afterPath="$PROJECT_DIR$/.idea/freeze.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/freeze_jar.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/Main.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/commands/FreezeCommand.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/commands/FreezeCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ChatHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ChatHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/FreezeHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/FreezeHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/runnable/FreezeRunnable.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/runnable/FreezeRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/FreezeManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/FreezeManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Lang.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Lang.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Reflection.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Reflection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatRoom.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/command/CommandRegistry.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/command/CommandRegistry.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/FactionsUUID.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/FactionsUUID.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/HCFactions.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/HCFactions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_customhcf.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_customhcf.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_esshd.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_esshd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Mango.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Mango.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryItem.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/dependency/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +45,50 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="ConnectionEvents.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Factions.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InventoryGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BarrierGlass.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -78,10 +138,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="1292" />
+    <option name="height" value="767" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -98,8 +157,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -262,12 +322,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dependency/spigot.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/config.yml" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -491,13 +550,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="1292" height="767" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3192389" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31811264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -509,7 +568,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14895834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14890282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -538,37 +597,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Old Computer/bungee/Server1/plugins/aFreeze/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Old Computer/bungee/Server1/plugins/aFreeze/config.yml" />
     <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Lang.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding>
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -586,7 +620,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,8 +647,8 @@
         <state relative-caret-position="918">
           <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
-            <element signature="e#2760#2761#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2877#2878#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,10 +659,6 @@
           <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#994#995#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1105#1106#0" expanded="false" />
-            <element signature="e#1160#1161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -643,10 +675,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding>
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -664,7 +693,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,8 +720,8 @@
         <state relative-caret-position="918">
           <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
-            <element signature="e#2760#2761#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2877#2878#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -701,10 +732,6 @@
           <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#994#995#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1105#1106#0" expanded="false" />
-            <element signature="e#1160#1161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -784,20 +811,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Old Computer/bungee/Server1/plugins/aFreeze/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/System.java" />
+    <entry file="file://$USER_HOME$/Desktop/Old Computer/bungee/Server1/plugins/aFreeze/config.yml" />
     <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/FreezeHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -812,10 +827,6 @@
           <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#994#995#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1105#1106#0" expanded="false" />
-            <element signature="e#1160#1161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -841,8 +852,8 @@
         <state relative-caret-position="574">
           <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="12" />
           <folding>
-            <element signature="e#2760#2761#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2877#2878#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -859,14 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -909,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,10 +919,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
           <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding>
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,7 +935,7 @@
         <state relative-caret-position="391">
           <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -962,11 +960,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="59" column="34" lean-forward="false" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state relative-caret-position="212">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -976,7 +998,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>freeze:jar</last-edited>
+          <last-edited>aFreeze:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

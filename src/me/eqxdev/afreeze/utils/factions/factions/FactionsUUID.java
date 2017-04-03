@@ -17,9 +17,9 @@ public class FactionsUUID implements Faction {
     public List<Player> getAllPlayerFor(Player p) {
         List<Player> players = new ArrayList<>();
         FPlayer fp = FPlayers.getInstance().getByPlayer(p);
-        if(fp.hasFaction()) {
-            for(Player facPlayer : fp.getFaction().getOnlinePlayers()) {
-                if(!facPlayer.getName().equals(p.getName())) {
+        if (fp.hasFaction()) {
+            for (Player facPlayer : fp.getFaction().getOnlinePlayers()) {
+                if (!facPlayer.getName().equals(p.getName())) {
                     players.add(facPlayer);
                 }
             }

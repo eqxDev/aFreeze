@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,11 +30,11 @@ public class InventoryItem {
     }
 
     public ItemStack generate() {
-        return is==null?update():is;
+        return is == null ? update() : is;
     }
 
     private ItemStack update() {
-        if(is != null) {
+        if (is != null) {
             return is;
         }
 
@@ -46,19 +45,19 @@ public class InventoryItem {
 
     public void refreshCache() {
         ItemStack item = null;
-        if(type.contains(":")) {
+        if (type.contains(":")) {
             String[] types = type.split(":");
-            item = new ItemStack(Material.getMaterial(types[0]),1,(short) Integer.parseInt(types[1]));
+            item = new ItemStack(Material.getMaterial(types[0]), 1, (short) Integer.parseInt(types[1]));
         } else {
             item = new ItemStack(Material.getMaterial(type));
         }
         ItemMeta im = item.getItemMeta();
-        if(title != null) {
-            im.setDisplayName(ChatColor.translateAlternateColorCodes('&',title));
+        if (title != null) {
+            im.setDisplayName(ChatColor.translateAlternateColorCodes('&', title));
         }
-        if(lore != null) {
+        if (lore != null) {
             List<String> lores = new ArrayList<>();
-            for(String loreItem : lore) {
+            for (String loreItem : lore) {
                 lores.add(ChatColor.translateAlternateColorCodes('&', loreItem));
             }
             im.setLore(lores);

@@ -1,6 +1,5 @@
 package me.eqxdev.afreeze.utils.inventory;
 
-import org.apache.commons.collections4.map.HashedMap;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -28,7 +27,7 @@ public class InventoryGenerator {
 
 
     public InventoryGenerator(String title, int rows) {
-        inv = Bukkit.createInventory(null,rows*9,title);
+        inv = Bukkit.createInventory(null, rows * 9, title);
     }
 
     public Inventory getInventory() {
@@ -40,10 +39,14 @@ public class InventoryGenerator {
     }
 
     public void items(ItemStack is, int slot) {
-        inv.setItem(slot,is);
+        inv.setItem(slot, is);
     }
+
     public void items(InventoryItem item) {
-        inv.setItem(item.getSlot(),item.generate());
+        inv.setItem(item.getSlot(), item.generate());
     }
-    public void items(List<InventoryItem> item) { item.forEach((inventoryItem -> inv.setItem(inventoryItem.getSlot(),inventoryItem.generate()))); }
+
+    public void items(List<InventoryItem> item) {
+        item.forEach((inventoryItem -> inv.setItem(inventoryItem.getSlot(), inventoryItem.generate())));
+    }
 }

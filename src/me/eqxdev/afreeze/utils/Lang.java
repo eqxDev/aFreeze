@@ -32,7 +32,7 @@ public enum Lang {
     NOTIFY_LEAVE("NOTIFY_LEAVE", "&c%name% has left the server while frozen."),
     NOTIFY_JOIN("NOTIFY_JOIN", "&c%name% has joined the server while frozen."),
     NO_PERMISSION("NO_PERMISSION", "&cNo Permission."),
-    ERROR_FACTION_HOOK("ERROR_FACTION_HOOK","&cThe faction hook has been disabled, check console and your config file."),
+    ERROR_FACTION_HOOK("ERROR_FACTION_HOOK", "&cThe faction hook has been disabled, check console and your config file."),
     NEW_UPDATE("NEW_UPDATE", "&7[&caFreeze&7] A new update is available: (%version%)."),
     ABOUT("ABOUT", "&caFreeze About:\n &aVersion: &7%version% (&6%newversion%&7)\n &aAuthor: &7%author%\n &aSpigot Link:&7 %url%."),
 
@@ -50,19 +50,16 @@ public enum Lang {
     private final String def;
     private static FileConfiguration LANG;
 
-    private Lang(String path, String start)
-    {
+    private Lang(String path, String start) {
         this.path = path;
         this.def = start;
     }
 
-    public static void setFile(FileConfiguration config)
-    {
+    public static void setFile(FileConfiguration config) {
         LANG = config;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return ChatColor.translateAlternateColorCodes('&', LANG.getString(this.path, this.def));
     }
 
@@ -70,27 +67,23 @@ public enum Lang {
         return toString().split("\n");
     }
 
-    public void send(Player p)
-    {
-        for(String msg : toArray()) {
+    public void send(Player p) {
+        for (String msg : toArray()) {
             p.sendMessage(msg);
         }
     }
 
-    public void send(CommandSender p)
-    {
-        for(String msg : toArray()) {
+    public void send(CommandSender p) {
+        for (String msg : toArray()) {
             p.sendMessage(msg);
         }
     }
 
-    public String getDefault()
-    {
+    public String getDefault() {
         return this.def;
     }
 
-    public String getPath()
-    {
+    public String getPath() {
         return this.path;
     }
 

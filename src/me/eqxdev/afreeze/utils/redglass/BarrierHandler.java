@@ -11,7 +11,7 @@ public class BarrierHandler implements Listener {
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        if(BarrierManager.get().getBarriers().containsKey(e.getPlayer().getUniqueId())) {
+        if (BarrierManager.get().getBarriers().containsKey(e.getPlayer().getUniqueId())) {
             BarrierManager.get().remove(e.getPlayer().getUniqueId());
         }
     }

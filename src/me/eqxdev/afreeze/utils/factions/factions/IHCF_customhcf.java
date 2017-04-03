@@ -18,9 +18,9 @@ public class IHCF_customhcf implements Faction {
         List<Player> players = new ArrayList<>();
         PlayerFaction pf = HCF.getPlugin().getFactionManager().getPlayerFaction(p.getUniqueId());
 
-        if(pf != null) {
-            for(Object fac : pf.getOnlinePlayers()) {
-                Player facPlayer = (Player)fac;
+        if (pf != null) {
+            for (Object fac : pf.getOnlinePlayers()) {
+                Player facPlayer = (Player) fac;
                 if (!facPlayer.getName().equals(p.getName())) {
                     players.add(facPlayer);
                 }

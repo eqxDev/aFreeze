@@ -16,8 +16,8 @@ public class HCFactions implements Faction {
     public List<Player> getAllPlayerFor(Player p) {
         List<Player> players = new ArrayList<>();
         com.massivecraft.factions.Faction fac = FPlayers.getInstance().getByPlayer(p).getFaction();
-        if(fac != null) {
-            for(Player facPlayer : fac.getOnlinePlayers()) {
+        if (fac != null) {
+            for (Player facPlayer : fac.getOnlinePlayers()) {
                 if (!facPlayer.getName().equals(p.getName())) {
                     players.add(facPlayer);
                 }

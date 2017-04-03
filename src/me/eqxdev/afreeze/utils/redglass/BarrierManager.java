@@ -10,11 +10,12 @@ import java.util.*;
  */
 public class BarrierManager {
 
-    private static Map<UUID,BarrierGlass> barriers = new HashMap<>();
+    private static Map<UUID, BarrierGlass> barriers = new HashMap<>();
 
     private static BarrierManager instance;
+
     public static BarrierManager get() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new BarrierManager();
         }
         return instance;
@@ -40,9 +41,9 @@ public class BarrierManager {
 
         locs.add(p.getLocation().add(0, 2, 0));
 
-        barriers.put(p.getUniqueId(),new BarrierGlass(p,locs));
+        barriers.put(p.getUniqueId(), new BarrierGlass(p, locs));
 
-        p.teleport(p.getLocation().add(0,-1,0).getBlock().getLocation().add(0.5,1.0,0.5));
+        p.teleport(p.getLocation().add(0, -1, 0).getBlock().getLocation().add(0.5, 1.0, 0.5));
     }
 
     public BarrierGlass get(UUID uuid) {

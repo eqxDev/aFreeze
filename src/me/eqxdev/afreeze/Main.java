@@ -15,30 +15,17 @@ import me.eqxdev.afreeze.utils.factions.factions.*;
 import me.eqxdev.afreeze.utils.inventory.InventoryGenerator;
 import me.eqxdev.afreeze.utils.inventory.InventoryItem;
 import me.eqxdev.afreeze.utils.redglass.BarrierHandler;
-import me.esshd.hcf.HCF;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Server;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import org.json.simple.parser.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -65,7 +52,9 @@ public class Main extends JavaPlugin {
     private CommandRegistry commandRegistry;
     private Faction faction = null;
 
-    public static Main get() {return pl;}
+    public static Main get() {
+        return pl;
+    }
 
     public Faction getFaction() {
         return faction;
@@ -78,9 +67,9 @@ public class Main extends JavaPlugin {
         config();
         this.commandRegistry = new CommandRegistry(this);
 
-        ConfigManager.load(this,"config.yml");
+        ConfigManager.load(this, "config.yml");
 
-        if(!setupFaction()) {
+        if (!setupFaction()) {
             getServer().getLogger().severe("Could not setup Faction hook.");
             factionHook = false;
         }
@@ -90,7 +79,7 @@ public class Main extends JavaPlugin {
         registerCommands();
         registerListeners();
 
-        BukkitTask bt = new FreezeRunnable().runTaskTimer(this,10L,10L);
+        BukkitTask bt = new FreezeRunnable().runTaskTimer(this, 10L, 10L);
         generateInventory();
         update();
     }
@@ -101,7 +90,7 @@ public class Main extends JavaPlugin {
         System.gc();
     }
 
-    public CommandRegistry getCommandRegistry(){
+    public CommandRegistry getCommandRegistry() {
         return this.commandRegistry;
     }
 
@@ -123,37 +112,35 @@ public class Main extends JavaPlugin {
     private void config() {
         ConfigManager.load(this, "config.yml");
         List<InventoryItem> items = new ArrayList<>();
-        for(String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
+        for (String str : ConfigManager.get("config.yml").getConfigurationSection("inventory").getKeys(false)) {
             String item = ConfigManager.get("config.yml").getString("inventory." + str + ".item");
             int position = ConfigManager.get("config.yml").getInt("inventory." + str + ".position");
             String name = null;
-            if(ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
+            if (ConfigManager.get("config.yml").contains("inventory." + str + ".name")) {
                 name = ConfigManager.get("config.yml").getString("inventory." + str + ".name");
             }
             List<String> lore = null;
-            if(ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
+            if (ConfigManager.get("config.yml").contains("inventory." + str + ".lore")) {
                 lore = ConfigManager.get("config.yml").getStringList("inventory." + str + ".lore");
             }
             InventoryItem ii = new InventoryItem();
             ii.setLore(lore);
-            ii.setSlot(position-1);
+            ii.setSlot(position - 1);
             ii.setTitle(name);
             ii.setType(item);
             ii.refreshCache();
             items.add(ii);
         }
-        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0,31), 1);
+        InventoryGenerator inv = new InventoryGenerator(Lang.FROZEN_INV_TITLE.toString().substring(0, 31), 1);
         inv.items(items);
         InventoryGenerator.getInventories().put("frozen", inv);
     }
 
-    public YamlConfiguration getLang()
-    {
+    public YamlConfiguration getLang() {
         return this.LANG;
     }
 
-    public File getLangFile()
-    {
+    public File getLangFile() {
         return this.LANG_FILE;
     }
 
@@ -180,7 +167,7 @@ public class Main extends JavaPlugin {
             }
         }
         YamlConfiguration conf = YamlConfiguration.loadConfiguration(lang);
-        for(Lang item:Lang.values()) {
+        for (Lang item : Lang.values()) {
             if (conf.getString(item.getPath()) == null) {
                 conf.set(item.getPath(), item.getDefault());
             }
@@ -202,121 +189,101 @@ public class Main extends JavaPlugin {
 
     private boolean setupFaction() {
         String plugin = ConfigManager.get("config.yml").getString("factions_type");
-        if(plugin.equalsIgnoreCase("HCFactions")) {
+        if (plugin.equalsIgnoreCase("HCFactions")) {
             faction = new HCFactions();
             getLogger().info("Your server is running: HCFactions.");
-        } else if(plugin.equalsIgnoreCase("Factions")) {
+        } else if (plugin.equalsIgnoreCase("Factions")) {
             faction = new Factions();
             getLogger().info("Your server is running: Factions.");
-        } else if(plugin.equalsIgnoreCase("FactionsUUID")) {
+        } else if (plugin.equalsIgnoreCase("FactionsUUID")) {
             faction = new FactionsUUID();
             getLogger().info("Your server is running: FactionsUUID.");
-        } else if(plugin.equalsIgnoreCase("Mango")) {
+        } else if (plugin.equalsIgnoreCase("Mango")) {
             faction = new Mango();
             getLogger().info("Your server is running: Mango.");
-        } else if(plugin.equalsIgnoreCase("iHCF")) {
+        } else if (plugin.equalsIgnoreCase("iHCF")) {
             try {
                 Object esshd = me.esshd.hcf.HCF.getPlugin();
                 faction = new IHCF_esshd();
                 esshd = null;
                 getLogger().info("Your server is running: iHCF (esshd).");
-            } catch (NoClassDefFoundError e) {}
-            if(faction == null) {
+            } catch (NoClassDefFoundError e) {
+            }
+            if (faction == null) {
                 try {
                     Object customhcf = com.customhcf.hcf.HCF.getPlugin();
                     faction = new IHCF_customhcf();
                     customhcf = null;
                     getLogger().info("Your server is running: iHCF (customhcf).");
-                } catch (NoClassDefFoundError e) {}
+                } catch (NoClassDefFoundError e) {
+                }
             }
 
-            if(faction == null) {
+            if (faction == null) {
                 getServer().getLogger().severe("Can not find a supported version of iHCF, please contact me on spigot: eqx.");
             }
         }
-        return faction!=null;
+        return faction != null;
     }
 
     private synchronized void update() {
 
 
-        new BukkitRunnable()
-        {
+        new BukkitRunnable() {
             @Override
             public void run() {
 
-            URL localURL = null;
-                try
-                {
+                URL localURL = null;
+                try {
                     localURL = new URL("http://freetexthost.com/3ndetv1vmq");
-                }
-                catch (MalformedURLException localMalformedURLException)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                } catch (MalformedURLException localMalformedURLException) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
                 HttpURLConnection localHttpURLConnection = null;
-                try
-                {
-                    localHttpURLConnection = (HttpURLConnection)localURL.openConnection();
+                try {
+                    localHttpURLConnection = (HttpURLConnection) localURL.openConnection();
+                } catch (IOException localIOException1) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
-                catch (IOException localIOException1)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
-                }
-                try
-                {
+                try {
                     localHttpURLConnection.setRequestMethod("GET");
+                } catch (ProtocolException localProtocolException) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
-                catch (ProtocolException localProtocolException)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
-                }
-                try
-                {
+                try {
                     localHttpURLConnection.connect();
-                }
-                catch (IOException localIOException2)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                } catch (IOException localIOException2) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
                 BufferedReader localBufferedReader = null;
-                try
-                {
+                try {
                     localBufferedReader = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
-                }
-                catch (IOException localIOException3)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
+                } catch (IOException localIOException3) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
                 int i = 0;
                 String get_version = "not changed";
-                try
-                {
+                try {
                     String str;
                     while ((str = localBufferedReader.readLine()) != null) {
                         if (str.startsWith("CurrentVersion: ")) {
-                            if(str.equalsIgnoreCase("CurrentVersion: " + getDescription().getVersion())) {
+                            if (str.equalsIgnoreCase("CurrentVersion: " + getDescription().getVersion())) {
                                 // newest
                                 i = 1;
                             }
                             get_version = str.replaceFirst("CurrentVersion: ", "");
                         }
                     }
+                } catch (IOException localIOException4) {
+                    getServer().getLogger().log(Level.SEVERE, "Cannot connect to check for updates.");
                 }
-                catch (IOException localIOException4)
-                {
-                    getServer().getLogger().log(Level.SEVERE,"Cannot connect to check for updates.");
-                }
-                if (i == 0)
-                {
-                    getServer().getLogger().log(Level.WARNING,"There is a new version available (" + get_version + ").");
-                    getServer().getLogger().log(Level.WARNING,"https://www.spigotmc.org/resources/afreeze.11582/updates");
+                if (i == 0) {
+                    getServer().getLogger().log(Level.WARNING, "There is a new version available (" + get_version + ").");
+                    getServer().getLogger().log(Level.WARNING, "https://www.spigotmc.org/resources/afreeze.11582/updates");
                     NEW_UPDATE_VER = get_version;
                     NEW_UPDATE = true;
-                }
-                else
-                {
-                    getServer().getLogger().log(Level.INFO,"You are currently running the newest version.");
+                } else {
+                    getServer().getLogger().log(Level.INFO, "You are currently running the newest version.");
                     NEW_UPDATE = false;
                     NEW_UPDATE_VER = "";
                 }

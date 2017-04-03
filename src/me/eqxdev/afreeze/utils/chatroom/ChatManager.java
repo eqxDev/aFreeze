@@ -12,7 +12,9 @@ public class ChatManager {
     private static ChatManager instance;
 
     public static ChatManager get() {
-        if(instance == null) {instance=new ChatManager(); }
+        if (instance == null) {
+            instance = new ChatManager();
+        }
         return instance;
     }
 
@@ -22,8 +24,8 @@ public class ChatManager {
 
     public List<UUID> getPlayerChatRoom(UUID chatroom) {
         List<UUID> playerList = new ArrayList<>();
-        for(UUID uuid : players.keySet()) {
-            if(players.get(uuid).equals(chatroom)) {
+        for (UUID uuid : players.keySet()) {
+            if (players.get(uuid).equals(chatroom)) {
                 playerList.add(uuid);
             }
         }
@@ -43,28 +45,30 @@ public class ChatManager {
     }
 
     public void add(UUID owner, UUID frozen) {
-        if(chatrooms.containsKey(owner)) {
+        if (chatrooms.containsKey(owner)) {
             getChatRoom(owner).sendMessage(Lang.CHATROOM_CONSOLE_USERNAME.toString(), Lang.CHATROOM_CONSOLE_JOIN.toString());
-            players.put(frozen,owner);
+            players.put(frozen, owner);
         } else {
-            chatrooms.put(owner,new ChatRoom(owner));
-            players.put(owner,owner);
-            players.put(frozen,owner);
+            chatrooms.put(owner, new ChatRoom(owner));
+            players.put(owner, owner);
+            players.put(frozen, owner);
             getChatRoom(owner).sendMessage(Lang.CHATROOM_CONSOLE_USERNAME.toString(), Lang.CHATROOM_CONSOLE_NEW.toString());
         }
     }
+
     public void remove(UUID owner, UUID frozen) {
-        if(chatrooms.containsKey(owner)) {
+        if (chatrooms.containsKey(owner)) {
             getChatRoom(owner).sendMessage(Lang.CHATROOM_CONSOLE_USERNAME.toString(), frozen.toString() + " has been removed from the chatroom.");
-            players.remove(frozen,owner);
+            players.remove(frozen, owner);
         }
     }
+
     public void delete(UUID owner) {
         getChatRoom(owner).sendMessage(Lang.CHATROOM_CONSOLE_USERNAME.toString(), Lang.CHATROOM_CONSOLE_DELETE.toString());
-        for(UUID uuid : getPlayerChatRoom(owner)) {
+        for (UUID uuid : getPlayerChatRoom(owner)) {
             players.remove(uuid);
         }
-        if(chatrooms.containsKey(owner)) {
+        if (chatrooms.containsKey(owner)) {
             chatrooms.remove(owner);
         }
     }

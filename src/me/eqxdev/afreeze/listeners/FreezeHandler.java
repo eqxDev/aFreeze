@@ -1,6 +1,5 @@
 package me.eqxdev.afreeze.listeners;
 
-import me.eqxdev.afreeze.Main;
 import me.eqxdev.afreeze.utils.FreezeManager;
 import me.eqxdev.afreeze.utils.Lang;
 import me.eqxdev.afreeze.utils.inventory.InventoryGenerator;
@@ -105,7 +104,7 @@ public class FreezeHandler implements Listener {
             Location to = e.getFrom();
             to.setPitch(e.getTo().getPitch());
             to.setYaw(e.getTo().getYaw());
-            if(!(p.getVelocity().getY() < -0.0784000015258788 && p.getVelocity().getY() > -0.0784000015258790)) {
+            if (!(p.getVelocity().getY() < -0.0784000015258788 && p.getVelocity().getY() > -0.0784000015258790)) {
                 to.setY(e.getTo().getY());
             }
             e.setTo(e.getFrom());
@@ -114,8 +113,8 @@ public class FreezeHandler implements Listener {
 
     @EventHandler
     public void inventoryClick(InventoryClickEvent e) {
-        if(FreezeManager.get().isFrozen(e.getWhoClicked().getUniqueId())) {
-            if(e.getInventory().getTitle().equals(InventoryGenerator.getInventories().get("frozen").getInventory().getTitle())) {
+        if (FreezeManager.get().isFrozen(e.getWhoClicked().getUniqueId())) {
+            if (e.getInventory().getTitle().equals(InventoryGenerator.getInventories().get("frozen").getInventory().getTitle())) {
                 e.setCancelled(true);
             }
         }

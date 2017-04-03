@@ -17,19 +17,19 @@ public class FreezeRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        if(!FreezeManager.get().isFreezeAll()) {
-            if(FreezeManager.get().hasFrozenPlayers()) {
-                for(UUID uuid : FreezeManager.get().getFreeze().keySet()) {
+        if (!FreezeManager.get().isFreezeAll()) {
+            if (FreezeManager.get().hasFrozenPlayers()) {
+                for (UUID uuid : FreezeManager.get().getFreeze().keySet()) {
                     Player p = Bukkit.getPlayer(uuid);
-                    if(p == null) {
+                    if (p == null) {
                         continue;
                     }
                     switch (FreezeManager.get().getType(uuid)) {
                         case HACKER:
                             p.openInventory(Main.get().generateInventory());
                         case PLAYER:
-                                if (BarrierManager.get().getBarriers().containsKey(uuid)) {
-                                    BarrierManager.get().get(uuid).update(false);
+                            if (BarrierManager.get().getBarriers().containsKey(uuid)) {
+                                BarrierManager.get().get(uuid).update(false);
                             }
                     }
                 }

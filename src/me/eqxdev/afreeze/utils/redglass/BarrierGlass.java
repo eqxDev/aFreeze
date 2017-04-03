@@ -35,7 +35,7 @@ public class BarrierGlass {
             @Override
             public void run() {
                 for (Location loc : getLocationList()) {
-                    if(undo) {
+                    if (undo) {
                         player.sendBlockChange(loc, loc.getBlock().getType(), loc.getBlock().getData());
                     } else {
                         player.sendBlockChange(loc, Material.STAINED_GLASS, (byte) 14);

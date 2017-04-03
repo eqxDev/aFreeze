@@ -22,10 +22,10 @@ public class ChatRoom {
     private String format = null;
 
     public void sendMessage(String name, String msg) {
-        for (UUID uuid: ChatManager.get().getPlayerChatRoom(owner)) {
+        for (UUID uuid : ChatManager.get().getPlayerChatRoom(owner)) {
             Player p = Bukkit.getPlayer(uuid);
-            if(p !=null) {
-                if(format == null) {
+            if (p != null) {
+                if (format == null) {
                     format = Lang.CHATROOM_FORMAT.toString();
                 }
                 p.sendMessage(format.replace("%name%", name).replace("%msg%", msg));
@@ -35,7 +35,7 @@ public class ChatRoom {
 
     public List<UUID> getPlayers() {
         List<UUID> uuids = new ArrayList<>();
-        for(UUID uuid : ChatManager.get().getPlayerChatRoom(owner)) {
+        for (UUID uuid : ChatManager.get().getPlayerChatRoom(owner)) {
             uuids.add(uuid);
         }
         return uuids;
