@@ -7,30 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a9b244-d7f1-4486-a36d-2b7d077c5682" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/freeze_jar.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/Main.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/commands/FreezeCommand.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/commands/FreezeCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ChatHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ChatHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/ConnectionEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/FreezeHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/listeners/FreezeHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/runnable/FreezeRunnable.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/runnable/FreezeRunnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/FreezeManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/FreezeManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Lang.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Lang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Reflection.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/Reflection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatRoom.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/chatroom/ChatRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/command/CommandRegistry.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/command/CommandRegistry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Factions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/FactionsUUID.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/FactionsUUID.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/HCFactions.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/HCFactions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_customhcf.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_customhcf.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_esshd.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/IHCF_esshd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Mango.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/factions/factions/Mango.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryItem.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/inventory/InventoryItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierGlass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierHandler.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierManager.java" afterPath="$PROJECT_DIR$/src/me/eqxdev/afreeze/utils/redglass/BarrierManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/aFreeze_jar/aFreeze.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/aFreeze_jar/freeze.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/dependency/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -316,6 +295,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aFreeze" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aFreeze" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aFreeze" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aFreeze" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="dependency" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -556,7 +567,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31811264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31811264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -568,7 +579,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14890282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14890282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
