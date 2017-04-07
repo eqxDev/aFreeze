@@ -80,9 +80,14 @@ public class Main extends JavaPlugin {
 
         ConfigManager.load(this,"config.yml");
 
-        if(!setupFaction()) {
-            getServer().getLogger().severe("Could not setup Faction hook.");
+        String plugin = ConfigManager.get("config.yml").getString("factions_type");
+        if(plugin.equalsIgnoreCase("disabled")) {
             factionHook = false;
+        } else {
+            if (!setupFaction(plugin)) {
+                getServer().getLogger().severe("Could not setup Faction hook.");
+                factionHook = false;
+            }
         }
 
         ChatManager.get();
@@ -200,8 +205,7 @@ public class Main extends JavaPlugin {
         return InventoryGenerator.getInventories().get("frozen").getInventory();
     }
 
-    private boolean setupFaction() {
-        String plugin = ConfigManager.get("config.yml").getString("factions_type");
+    private boolean setupFaction(String plugin) {
         if(plugin.equalsIgnoreCase("HCFactions")) {
             faction = new HCFactions();
             getLogger().info("Your server is running: HCFactions.");

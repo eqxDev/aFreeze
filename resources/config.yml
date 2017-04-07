@@ -1,4 +1,4 @@
-# Options: HCFactions, Factions, Magno, iHCF, iHCF_esshd
+# Options: HCFactions, Factions, Magno, iHCF, disabled
 #
 # Known Supported list:
 # Factions:
@@ -21,11 +21,11 @@
 #  - https://www.spigotmc.org/resources/mango-hardcore-factions-plugin-w-claiming-wands.19387/
 #
 # iHCF:
-#  More specific:
-#   - iHCF_esshd
-#   - iHCF_customhcf
-#   There are multible versions of iHCF doing "iHCF" will automatically find what version you are using
+#   There are multiple versions of iHCF doing "iHCF" will automatically find what version you are using
 #   then update this file. If your version is not supported please contact me on spigot. https://www.spigotmc.org/members/eqx.24492/
+#
+# disabled:
+#   When not using this feature select this and it will not try and find your version.
 #
 
 factions_type: 'add_faction_here'
