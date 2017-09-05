@@ -1,0 +1,33 @@
+# Options: HCFactions, Factions, Magno, iHCF, iHCF_esshd
+#
+# Known Supported list:
+# Factions:
+#  - https://www.spigotmc.org/resources/factions.1900/
+#  -
+#
+# HCFactions:
+#  - https://github.com/drtshock/HCFactions (And any fork of it.)
+#  -
+#   Will it work?
+#    If the path: com.massivecraft.factions.FPlayers and com.massivecraft.factions.Faction
+#    exists inside the plugin then this will be supported and if you could send me a link to the download page
+#    so it can be included in the supported file to my spigot profile. https://www.spigotmc.org/members/eqx.24492/
+#
+# Mango:
+#  - https://www.spigotmc.org/resources/mango-hardcore-factions-plugin-w-claiming-wands.19387/
+#
+# iHCF:
+#  More specific:
+#   - iHCF_esshd
+#   - iHCF_customhcf
+#   There are multible versions of iHCF doing "iHCF" will automatically find what version you are using
+#   then update this file. If your version is not supported please contact me on spigot. https://www.spigotmc.org/members/eqx.24492/
+#
+
+factions_type: 'add_faction_here'
+
+#
+# If you have tried all the options please send me a link to the download page
+# through spigot: https://www.spigotmc.org/members/eqx.24492/ and I may add it
+# to the supported list.
+#

@@ -1,0 +1,6 @@
+name: aFreeze
+author: eqxDev
+version: 3.1
+main: me.eqxdev.afreeze.Main
+description: Just a freeze plugin?
+softdepend: [Factions, TheCore]
