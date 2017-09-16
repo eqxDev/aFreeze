@@ -22,7 +22,7 @@ public class ChatHandler implements Listener {
     public void chat(AsyncPlayerChatEvent e) {
         if(FreezeManager.get().isFreezeAll() && !e.getPlayer().hasPermission(Lang.PERM_FREEZE_SERVER_BYPASS.toString())) {
             e.setCancelled(true);
-            for(Player p : BukkitUtils.getOnlinePlayers()) {
+            for(Player p : BukkitUtils .getOnlinePlayers()) {
                 p.getName();
             }
             return;

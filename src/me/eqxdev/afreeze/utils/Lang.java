@@ -44,7 +44,7 @@ public enum Lang {
     PERM_FREEZE_FACTION("PERM_FREEZE_FACTION", "afreeze.faction"),
     PERM_FREEZE_ALL("PERM_FREEZE_ALL", "afreeze.all"),
     PERM_UPDATE("PERM_UPDATE", "afreeze.update"),
-    PERM_FREEZE("PERM_FREEZE", "afreeze.");
+    PERM_FREEZE("PERM_FREEZE", "afreeze.main");
 
     private final String path;
     private final String def;

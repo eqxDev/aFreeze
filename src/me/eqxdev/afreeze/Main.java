@@ -252,7 +252,7 @@ public class Main extends JavaPlugin {
             URL localURL = null;
                 try
                 {
-                    localURL = new URL("http://freetexthost.com/3ndetv1vmq");
+                    localURL = new URL("http://freetexthost.com/klel2150jf");
                 }
                 catch (MalformedURLException localMalformedURLException)
                 {

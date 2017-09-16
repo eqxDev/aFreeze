@@ -18,10 +18,10 @@ public class FreezeCommand {
 
     @Command(name="freeze",playerOnly = true,description = "Freeze a player",aliases = {"ss","afreeze"})
     public void command(CommandSender sender, String label, String[] args) {
-        if(sender.isOp() && sender.hasPermission(Lang.PERM_FREEZE.toString())) {
+        if(sender.hasPermission(Lang.PERM_FREEZE.toString())) {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("-h")) { // hacker mode
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString()) && !sender.isOp()) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_HACKER.toString())) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -42,7 +42,7 @@ public class FreezeCommand {
                     t.openInventory(Main.get().generateInventory());
                     toggle(t, sender, FreezeType.HACKER);
                 } else if (args[0].equalsIgnoreCase("-g")) { // No glass
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString()) && !sender.isOp()) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_NO_GLASS.toString())) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -64,7 +64,7 @@ public class FreezeCommand {
                 } else if (args[0].equalsIgnoreCase("about")) { // No glass
                     sender.sendMessage(Lang.ABOUT.toString().replace("%version%", Main.get().getDescription().getVersion()).replace("%newversion%", Main.NEW_UPDATE?Main.NEW_UPDATE_VER:"Current").replace("%author%", "eqxDev").replace("%url%", "https://www.spigotmc.org/resources/afreeze.11582/"));
                 } else if (args[0].equalsIgnoreCase("-f")) { // faction
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString()) && !sender.isOp()) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_FACTION.toString())) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -90,7 +90,7 @@ public class FreezeCommand {
                         toggle(player, sender, FreezeType.FACTION);
                     }
                 } else if (args[0].equalsIgnoreCase("-all")) { // all
-                    if(!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString()) && !sender.isOp()) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE_ALL.toString())) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }
@@ -119,7 +119,7 @@ public class FreezeCommand {
                     }
 
                 } else { // normal
-                    if(!sender.hasPermission(Lang.PERM_FREEZE.toString()) && !sender.isOp()) {
+                    if(!sender.hasPermission(Lang.PERM_FREEZE.toString())) {
                         Lang.NO_PERMISSION.send(sender);
                         return;
                     }

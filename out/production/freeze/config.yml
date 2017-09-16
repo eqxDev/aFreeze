@@ -1,8 +1,12 @@
-# Options: HCFactions, Factions, Magno, iHCF, iHCF_esshd
+# Options: HCFactions, Factions, Magno, iHCF, disabled
 #
 # Known Supported list:
 # Factions:
 #  - https://www.spigotmc.org/resources/factions.1900/
+#  -
+#
+# FactionsUUID:
+#  - https://www.spigotmc.org/resources/factionsuuid.1035/
 #  -
 #
 # HCFactions:
@@ -17,11 +21,11 @@
 #  - https://www.spigotmc.org/resources/mango-hardcore-factions-plugin-w-claiming-wands.19387/
 #
 # iHCF:
-#  More specific:
-#   - iHCF_esshd
-#   - iHCF_customhcf
-#   There are multible versions of iHCF doing "iHCF" will automatically find what version you are using
+#   There are multiple versions of iHCF doing "iHCF" will automatically find what version you are using
 #   then update this file. If your version is not supported please contact me on spigot. https://www.spigotmc.org/members/eqx.24492/
+#
+# disabled:
+#   When not using this feature select this and it will not try and find your version.
 #
 
 factions_type: 'add_faction_here'
@@ -31,3 +35,28 @@ factions_type: 'add_faction_here'
 # through spigot: https://www.spigotmc.org/members/eqx.24492/ and I may add it
 # to the supported list.
 #
+
+#
+# This is the inventory that will show when you are frozen with the -h (hacker) flag
+# every second the inventory will be opened again so the player cannot open their mod
+# menu.
+#
+# Customise the items inside the inventory.
+#
+
+inventory:
+  '0': # Unique id, no two can be the same.
+    name: "Example title" # The display name of the item, supports colour codes. (optional)
+    lore: # Lores on the item. Supports colour codes. (optional)
+      - "Line 1"
+      - "Line 2"
+    item: "STAINED_GLASS_PANE:14" # The item for example: "STONE" or STAINED_GLASS:3"  http://minecraft-ids.grahamedgecombe.com/    < after the minecraft: is the item name.
+    position: 1 # Where it is in the inventory. 1-9.
+  '1': # Unique id, no two can be the same.
+    name: "&4&lFrozen" # The display name of the item, supports colour codes.
+    lore: # Lores on the item. Supports colour codes.
+      - "&7Please join our teamspeak:"
+      - "ts.server.com"
+      - "&4DO NOT LOGOUT!"
+    item: "APPLE" # The item for example: "STONE" or STAINED_GLASS:3"  http://minecraft-ids.grahamedgecombe.com/    < after the minecraft: is the item name.
+    position: 9 # Where it is in the inventory. 1-9.
